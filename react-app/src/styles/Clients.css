@@ -1,0 +1,152 @@
+/* CLIENTS PAGE — Immersive Silver Redesign & Interactive Elements */
+
+.clients-page .page-hero {
+  background-color: var(--bg-secondary);
+}
+
+.clients-intro-section {
+  padding: 150px 5%;
+}
+
+.large-intro {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--text-primary);
+  max-width: 1200px;
+}
+
+/* Horizontal Sections */
+.amc-section, .solar-partnership-section {
+  padding: 150px 5%;
+}
+
+.amc-grid, .solar-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 120px;
+  align-items: center;
+}
+
+.amc-content h2, .solar-content h2 {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  margin-bottom: 32px;
+}
+
+.amc-content p, .solar-content p {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Visual Blocks — Effect 1: Sliding Gradient Shine */
+.amc-visual, .solar-visual {
+  width: 100%;
+  aspect-ratio: 4/3;
+  background: var(--bg-surface);
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-float);
+  border: 1px solid var(--border-light);
+  cursor: pointer;
+}
+
+/* Background animated gradient */
+.amc-visual::before, .solar-visual::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 200%; height: 100%;
+  background: linear-gradient(
+    90deg,
+    var(--bg-secondary) 0%,
+    var(--bg-surface) 25%,
+    var(--bg-primary) 50%,
+    var(--bg-surface) 75%,
+    var(--bg-secondary) 100%
+  );
+  animation: slideGradient 4s linear infinite;
+  z-index: 0;
+}
+
+@keyframes slideGradient {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Tags — Effect 36: Expanding Ripple Wave on Hover */
+.amc-tag, .solar-tag {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 900;
+  color: #fff;
+  background: var(--accent);
+  padding: 30px 60px;
+  border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 10px 30px rgba(255, 75, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.amc-visual:hover .amc-tag, 
+.solar-visual:hover .solar-tag {
+  transform: scale(1.05);
+}
+
+.amc-tag::after, .solar-tag::after {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 100%; height: 100%;
+  transform: translate(-50%, -50%) scale(1);
+  border: 2px solid var(--accent);
+  border-radius: 100px;
+  opacity: 0;
+  z-index: -1;
+}
+
+.amc-visual:hover .amc-tag::after, 
+.solar-visual:hover .solar-tag::after {
+  animation: rippleExpand 1.5s ease-out infinite;
+}
+
+@keyframes rippleExpand {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
+  100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
+}
+
+/* CTA Block */
+.cta-block-section {
+  padding: 150px 5%;
+  margin: 0 2% 80px;
+  border-radius: 40px;
+  background: var(--text-primary);
+  color: white;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-block-content {
+  position: relative;
+  z-index: 2;
+}
+
+.cta-block-content h2 {
+  font-size: clamp(3rem, 5vw, 5rem);
+  margin-bottom: 24px;
+  color: #fff;
+}
+
+.cta-block-content p {
+  font-size: 1.4rem;
+  opacity: 0.8;
+  margin-bottom: 60px;
+}

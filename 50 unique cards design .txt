@@ -1,0 +1,100 @@
+1. Sliding Gradient Shine
+A card with a multi-color gradient (red → yellow → teal) that smoothly slides horizontally across the card every 3 seconds. The animation creates a flowing rainbow effect that gives a sense of continuous motion and energy.
+2. Rotating Rainbow Border
+A dark background card with a thick animated border that rotates in a circle using multiple colors (magenta → orange → yellow → magenta). The border spins at constant speed, creating a neon-like framing effect around the content.
+3. Floating Bubble Elements
+Background with two semi-transparent bubbles that float up and down at different speeds and positions. The bubbles create a dreamy, layered depth effect. One floats from top-left, the other from bottom-right with staggered timing.
+4. Pulsing Center Ring
+A solid color card with concentric circular rings that pulse outward from the center. Each ring starts small and grows larger while fading out, creating a sonar/radar detection animation effect.
+5. Shimmering Liquid Effect
+A gradient background (teal → pink) that moves horizontally like liquid flowing. The shimmer effect moves smoothly from left to right, creating an iridescent, water-like appearance.
+6. Bouncing Card
+The entire card bounces up and down in a smooth arc motion every 1.5 seconds. It stays centered but has vertical movement that makes it feel playful and energetic, like a ball being dropped gently.
+7. 3D Card Flip
+Card rotates on the Y-axis (left-right spin) continuously, creating a 3D flipping effect. The front and back are visible as it rotates, suggesting the card is turning in 3D space.
+8. Wave Motion Background
+A gradient card with an animated SVG wave pattern that moves horizontally at the bottom, like ocean waves. The wave undulates smoothly across the card from left to right in a loop.
+9. Expanding & Contracting Pulse
+The card itself scales up and down in a breathing pattern (1x → 1.05x → 1x). Creates a soft, organic motion like the card is breathing or pulsing with life.
+10. Rotating Gradient Background
+A gradient that rotates through different hues dynamically. The color positions shift around the card in a circular motion, creating a color-wheel effect that cycles continuously.
+11. Neon Glowing Aura
+A dark card with an inner glow effect (cyan/teal color) that pulses brighter and dimmer. The inner box-shadow glows and fades, creating a neon-sign aesthetic with atmospheric depth.
+12. 3D Tilt Perspective
+Card tilts slightly on both X and Y axes simultaneously. Creates a 3D perspective effect like the card is rotating away from and toward the viewer in multiple directions.
+13. Light Sweep Overlay
+A bright shine overlay moves from left to right across the card smoothly. It's like a light source sweeping across the surface, creating a glossy, reflective effect.
+14. Hue Rotation Cycle
+The card's colors continuously rotate through the entire hue spectrum (red → purple → blue → green → yellow → red). Creates a rainbow morphing effect where all colors shift together.
+15. Squeeze & Release Animation
+Card scales down and then back to normal size in a quick squeeze motion. The timing is tight and creates a pop-like feeling, as if the card is being gently compressed and released.
+16. Rainbow Color Band
+A horizontal band of rainbow colors (red, yellow, green, cyan, blue, magenta) that continuously scrolls across the card from left to right, like a traveling color spectrum.
+17. Swipe-In Highlight
+A bright white overlay sweeps across the card from left to right in a swiping motion. Creates a glossy, polished effect as if light is catching on the surface.
+18. Fade In & Out Pulse
+The entire card fades from full opacity to 60% opacity and back in a smooth 2-second loop. Creates a breathing, eye-catching effect that draws attention without being too aggressive.
+19. Rapid Strobe Flash
+Quick on-and-off opacity changes (like a camera strobe) at 0.5-second intervals. The card flashes rapidly, creating an urgent, attention-grabbing effect that's energetic and intense.
+20. Gentle Twist Rotation
+Card rotates on the Z-axis (clockwise) very slightly (±5 degrees) back and forth. Creates a subtle, relaxed tilting motion as if the card is gently swaying side-to-side.
+21. Scale Zoom In & Out
+Card smoothly scales larger and smaller (1x → 1.1x → 1x) in a rhythmic pulse. Creates a zoom effect that draws focus without being disruptive.
+22. Color Inversion Blink
+The card's colors invert halfway through the animation cycle (colors flip to their negative/opposite values) and back. Creates a stark, artistic effect where the entire color scheme flips.
+23. Saturation Intensify
+Card colors become more vivid and saturated (1x → 2x saturation) and then return to normal. Makes colors pop more vibrantly during the peak of the animation.
+24. Brightness Flicker
+Card brightness increases and decreases in a smooth loop. Creates an effect like the card is being illuminated and dimmed by a light source.
+25. Blur & Sharpen Cycle
+Card alternates between sharp focus and blurred state. Creates a pulsing visual effect where the card goes fuzzy and then snaps back into focus.
+26. Full Hue Spectrum Shift
+Continuous hue rotation through all 360 degrees of the color wheel. All colors shift together, creating a rainbow morphing effect that's smooth and continuous.
+27. Skew Tilt Transform
+Card skews horizontally on one axis (leans left and right). Creates a slanted perspective effect, like the card is being viewed from an angle that keeps changing.
+28. Multi-Directional Shadow
+The card's shadow moves around it in a circular pattern (top, right, bottom, left). The shadow depth pulses as it moves, creating a 3D effect.
+29. Y-Axis Flip 3D
+Card flips 180 degrees on the Y-axis (left-right rotation) continuously. You see the front and back rotate in 3D space, creating a card-flipping effect.
+30. Zigzag Movement
+Card moves left-right-left in a zigzag pattern continuously. The movement is smooth and creates a playful, dancing motion across the horizontal axis.
+31. Swinging Pendulum
+Card rotates back and forth from center (like a pendulum swing). The rotation increases and decreases, creating a gentle swaying motion at the top.
+32. Glitch Distortion
+Card has sudden, rapid micro-movements in random directions (up-down, left-right jumps). Creates a digital glitch effect that's chaotic but controlled, lasting only microseconds.
+33. Pinging Ripple Ring
+A border around the card pulses outward (grows larger and fades) in a continuous loop. Looks like a sonar ping or ripple effect emanating from the center.
+34. Shape Morph
+Card border-radius animates from sharp (12px) to rounded-pill (30px) and back continuously. The card appears to morph from rectangular to oval and back.
+35. Traffic Light Indicator
+A circular light in the center of the card cycles through three colors: red → yellow → green on a set interval. Like a traffic light status indicator that changes state.
+36. Expanding Ripple Wave
+A circular wave expands outward from the center of the card, starting small and growing larger while fading out. Creates a water-droplet ripple effect.
+37. Horizontal Rainbow Scroll
+A band of rainbow colors scrolls horizontally continuously across the card background. The colors shift from left to right in an endless loop.
+38. Neon Border Pulse Glow
+Card has a colored border (purple/blue) that pulses with a glowing box-shadow. The glow intensifies and dims, creating a pulsing neon frame effect.
+39. Breathing Expansion
+Card slowly expands and contracts (1x → 1.02x → 1x) in a very slow, gentle rhythm. Creates a calming, organic breathing motion effect.
+40. Hand Wave Motion
+Card rotates left and right (-5° to +5°) in a quick motion that looks like it's waving hello. The rotation is rhythmic and playful.
+41. Traveling Shadow
+The shadow beneath the card moves from left to right to left continuously. The shadow appears to travel around the card, creating a moving light source effect.
+42. Neon Flicker Strobe
+Dark card with colored text/border that flickers on-and-off rapidly like a broken neon sign. Creates an unstable, buzzing neon aesthetic.
+43. Colorful Gradient Carousel
+Multiple gradient layers rotate/cycle through different color combinations automatically. Each cycle brings a new gradient palette to the card.
+44. Liquid Blob Morph
+The background uses blob-like shapes that morph and flow within the card bounds. The shapes shift smoothly like liquid or organic matter moving around.
+45. Scattered Particle Float
+Small particle dots float around the card in random paths with opacity changes. Creates a magical, particle-system effect with elements drifting lazily.
+46. Magnetic Attraction
+Multiple elements are drawn toward the center of the card (like magnetic pull) and then released. Creates a clustering and dispersing motion effect.
+47. Spiral Vortex
+Elements rotate around the center in a spiral pattern, moving inward and outward. Creates a vortex/whirlpool effect that's hypnotic.
+48. Data Stream Flow
+Diagonal lines or bars flow across the card continuously from top-left to bottom-right. Creates a tech/data-flowing aesthetic with directional motion.
+49. Kaleidoscope Symmetry
+The card content mirrors/reflects multiple times creating a kaleidoscope pattern. As colors change, the entire mirrored pattern shifts together.
+50. Quantum Superposition
+Card appears to be in multiple states simultaneously with semi-transparent overlays shifting. Different versions of the card (different colors/positions) flicker in and out of focus. Creates a quantum/parallel-universe feeling where the card exists in multiple states at once.

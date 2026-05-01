@@ -1,0 +1,70 @@
+.staggered-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.sg-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  cursor: pointer;
+  will-change: transform, opacity;
+}
+
+.sg-card:hover .sg-image {
+  transform: scale(1.05);
+}
+
+.sg-image {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.sg-placeholder {
+  width: 100%;
+  height: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: linear-gradient(145deg, var(--bg-secondary), #cdd1d9);
+  border: 1.5px dashed var(--border-light);
+  transition: background 0.3s ease;
+}
+
+.sg-card:hover .sg-placeholder {
+  background: linear-gradient(145deg, #dde0e7, #c8cdd6);
+}
+
+.sg-placeholder span {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.sg-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: 0.05em;
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.sg-card:hover .sg-label {
+  transform: translateY(0);
+}

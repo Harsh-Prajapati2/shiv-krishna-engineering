@@ -1,0 +1,167 @@
+/* CONTACT PAGE — Immersive Silver Redesign & Interactive Elements */
+
+.contact-page .page-hero {
+  background-color: var(--bg-secondary);
+}
+
+.contact-main-section {
+  padding: 150px 5%;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 120px;
+}
+
+.contact-form-wrapper h2 {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  margin-bottom: 60px;
+}
+
+.contact-form {
+  display: grid;
+  gap: 40px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  letter-spacing: 0.2em;
+}
+
+.form-group input, 
+.form-group select, 
+.form-group textarea {
+  padding: 24px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  transition: all 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+}
+
+.form-group input:focus, 
+.form-group select:focus, 
+.form-group textarea:focus {
+  outline: none;
+  background: white;
+  border-color: var(--accent);
+  box-shadow: 0 10px 30px rgba(255, 75, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Contact Info Cards — Effect 48 (Data Stream Flow) & 11 (Neon Glow) */
+.contact-info-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.info-card {
+  padding: 50px;
+  background: var(--bg-surface);
+  border-radius: 24px;
+  border: 1px solid var(--border-light);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: var(--shadow-float);
+}
+
+/* Background Data Stream (Effect 48) - Hidden by default */
+.info-card::before {
+  content: '';
+  position: absolute;
+  top: -100%; left: -100%;
+  width: 300%; height: 300%;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(255, 75, 0, 0.03) 10px,
+    rgba(255, 75, 0, 0.03) 12px
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+}
+
+.info-card:hover {
+  /* Effect 11: Neon Glowing Aura */
+  border-color: var(--accent);
+  box-shadow: 0 0 30px rgba(255, 75, 0, 0.15), inset 0 0 20px rgba(255, 75, 0, 0.05);
+  transform: translateY(-5px);
+}
+
+.info-card:hover::before {
+  opacity: 1;
+  animation: streamFlow 20s linear infinite;
+}
+
+@keyframes streamFlow {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(-50px, 50px); }
+}
+
+/* Ensure content stays above the data stream */
+.info-card h3, .info-card address, .info-card .contact-links, .info-card .reg-details {
+  position: relative;
+  z-index: 2;
+}
+
+.info-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 24px;
+  color: var(--accent);
+}
+
+.info-card address, .info-card p, .info-card .contact-links {
+  font-style: normal;
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+.contact-links div {
+  margin-bottom: 12px;
+}
+
+.contact-links strong {
+  color: var(--text-primary);
+}
+
+.reg-details {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.reg-item {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  border-bottom: 1px dashed var(--border-medium);
+  padding-bottom: 12px;
+}
+
+.reg-item .val { color: var(--text-primary); font-weight: 800; }

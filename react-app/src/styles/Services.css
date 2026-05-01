@@ -1,0 +1,285 @@
+/* SERVICES PAGE — Immersive Light Silver Redesign & 4 Unique Division Cards */
+
+.services-page {
+  background-color: var(--bg-primary);
+  overflow: hidden;
+}
+
+.services-page .page-hero {
+  background-color: var(--bg-secondary);
+}
+
+.service-section {
+  padding: 150px 5%;
+  position: relative;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.service-section:nth-child(even) {
+  background-color: var(--bg-primary);
+}
+
+.service-section:nth-child(odd) {
+  background-color: var(--bg-secondary);
+}
+
+.position-relative {
+  position: relative;
+}
+
+/* Parallax Division Numbers */
+.div-num-bg {
+  position: absolute;
+  top: -50px;
+  right: -5%;
+  font-family: var(--font-display);
+  font-size: 25vw;
+  font-weight: 900;
+  line-height: 0.8;
+  color: rgba(18, 20, 22, 0.03); /* Extremely subtle silver/black */
+  z-index: 0;
+  pointer-events: none;
+}
+
+.division-header {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 80px;
+}
+
+.division-header h2 {
+  font-size: clamp(3rem, 6vw, 5rem);
+  margin-bottom: 24px;
+  max-width: 900px;
+  color: var(--text-primary);
+}
+
+.division-desc {
+  font-size: 1.4rem;
+  color: var(--text-secondary);
+  max-width: 800px;
+  line-height: 1.6;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 40px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Base Creative Card styling */
+.creative-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 30px;
+  padding: 50px;
+  overflow: hidden;
+  box-shadow: var(--shadow-float);
+  cursor: pointer;
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-content {
+  position: relative;
+  z-index: 10;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.icon-wrapper {
+  font-size: 2.5rem;
+  color: var(--accent);
+  margin-bottom: 32px;
+  transition: transform 0.4s ease;
+}
+
+.creative-card:hover .icon-wrapper {
+  transform: scale(1.2) rotate(10deg);
+}
+
+.creative-card h3 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: var(--text-primary);
+}
+
+.creative-card p {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* ====================================================
+   DIVISION 1: LIQUID BLOB MORPH (Effect 44)
+   ==================================================== */
+.card-blob {
+  transition: transform 0.5s cubic-bezier(0.2, 1, 0.3, 1), box-shadow 0.5s ease;
+}
+
+.card-blob:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 30px 60px rgba(255, 75, 0, 0.08);
+  border-color: rgba(255, 75, 0, 0.2);
+}
+
+.blob-bg {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 120%; height: 120%;
+  background: radial-gradient(circle, rgba(255, 75, 0, 0.1) 0%, rgba(255, 75, 0, 0.02) 60%, transparent 80%);
+  transform: translate(-50%, -50%);
+  border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+  animation: blobFlow 10s linear infinite;
+  z-index: 1;
+  opacity: 0.5;
+  transition: opacity 0.5s ease, background 0.5s ease;
+}
+
+.card-blob:hover .blob-bg {
+  opacity: 1;
+  background: radial-gradient(circle, rgba(255, 75, 0, 0.15) 0%, rgba(255, 75, 0, 0.05) 60%, transparent 80%);
+  animation-duration: 5s; /* Speeds up on hover */
+}
+
+@keyframes blobFlow {
+  0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; transform: translate(-50%, -50%) rotate(0deg); }
+  50% { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; }
+  100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* ====================================================
+   DIVISION 2: RADAR RIPPLE RINGS (Effect 4 & 33)
+   ==================================================== */
+.card-radar {
+  transition: background 0.4s ease;
+}
+
+.card-radar:hover {
+  background: var(--bg-surface);
+}
+
+.radar-rings {
+  position: absolute;
+  top: 70px; /* Aligned roughly with icon */
+  left: 65px;
+  width: 1px; height: 1px;
+  z-index: 1;
+}
+
+.ring {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1px solid var(--accent);
+  opacity: 0;
+}
+
+.card-radar:hover .ring-1 { animation: radarPulse 2s cubic-bezier(0.2, 0.8, 0.2, 1) infinite; animation-delay: 0s; }
+.card-radar:hover .ring-2 { animation: radarPulse 2s cubic-bezier(0.2, 0.8, 0.2, 1) infinite; animation-delay: 0.4s; }
+.card-radar:hover .ring-3 { animation: radarPulse 2s cubic-bezier(0.2, 0.8, 0.2, 1) infinite; animation-delay: 0.8s; }
+
+@keyframes radarPulse {
+  0% { width: 0; height: 0; opacity: 0.8; border-width: 2px; }
+  100% { width: 400px; height: 400px; opacity: 0; border-width: 0px; }
+}
+
+/* ====================================================
+   DIVISION 3: 3D TECH DATA STREAM (Effect 48 & 12)
+   ==================================================== */
+.tech-grid {
+  perspective: 1200px;
+}
+
+.card-tech3d {
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.2, 1, 0.3, 1), border-color 0.4s ease;
+}
+
+.data-stream-bg {
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 15px,
+    rgba(18, 20, 22, 0.03) 15px,
+    rgba(18, 20, 22, 0.03) 17px
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 1;
+}
+
+.card-tech3d:hover {
+  transform: rotateX(8deg) rotateY(-8deg) translateY(-15px);
+  border-color: rgba(18, 20, 22, 0.2);
+  box-shadow: -20px 30px 60px rgba(0, 0, 0, 0.1);
+}
+
+.card-tech3d:hover .data-stream-bg {
+  opacity: 1;
+  animation: techStream 15s linear infinite;
+}
+
+.card-tech3d .card-content {
+  transform: translateZ(40px); /* 3D pop out effect on content */
+}
+
+@keyframes techStream {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(-100px, 100px); }
+}
+
+/* ====================================================
+   DIVISION 4: SHIMMERING LIQUID OVERLAY (Effect 5)
+   ==================================================== */
+.card-shimmer {
+  border: 1px solid var(--border-medium);
+  transition: transform 0.4s ease;
+}
+
+.card-shimmer:hover {
+  transform: translateY(-8px);
+}
+
+.shimmer-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    transparent 20%,
+    rgba(255, 255, 255, 0.8) 40%,
+    rgba(255, 255, 255, 0.9) 50%,
+    rgba(255, 255, 255, 0.8) 60%,
+    transparent 80%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card-shimmer:hover .shimmer-overlay {
+  opacity: 1;
+  animation: liquidShimmer 2s infinite linear;
+}
+
+@keyframes liquidShimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -100% 0; }
+}

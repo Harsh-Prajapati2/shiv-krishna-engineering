@@ -1,0 +1,136 @@
+.svg-timeline-section {
+  padding: 120px 0;
+  position: relative;
+}
+
+.timeline-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.timeline-header h2 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--text-primary);
+  margin-top: 12px;
+}
+
+.timeline-track {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.timeline-svg {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 100%;
+  top: 0;
+  z-index: 0;
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 1fr 40px 1fr;
+  align-items: center;
+  min-height: 120px;
+  position: relative;
+  z-index: 1;
+}
+
+.timeline-item.left {
+  direction: ltr;
+}
+
+.timeline-item.right {
+  direction: rtl;
+}
+
+.timeline-item.right .timeline-card {
+  direction: ltr;
+  text-align: right;
+}
+
+.timeline-node {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 3px solid var(--bg-primary);
+  box-shadow: 0 0 0 3px var(--accent);
+  margin: auto;
+  transform-origin: center;
+  transition: transform 0.3s ease;
+  grid-column: 2;
+}
+
+.timeline-card {
+  padding: 20px 28px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  transition: box-shadow 0.3s ease;
+  margin: 12px 0;
+}
+
+.timeline-card:hover {
+  box-shadow: 0 8px 32px rgba(255, 75, 0, 0.08);
+}
+
+.timeline-year {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.timeline-card h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 6px;
+}
+
+.timeline-card p {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.timeline-item.left .timeline-card { grid-column: 1; }
+.timeline-item.left .timeline-node { grid-column: 2; }
+
+@media (max-width: 640px) {
+  .timeline-track {
+    padding-left: 32px;
+  }
+  .timeline-svg {
+    left: 0;
+    transform: none;
+  }
+  .timeline-item {
+    grid-template-columns: 32px 1fr;
+  }
+  .timeline-item.left,
+  .timeline-item.right {
+    direction: ltr;
+  }
+  .timeline-item.right .timeline-card {
+    text-align: left;
+  }
+  .timeline-node {
+    grid-column: 1 !important;
+  }
+  .timeline-card {
+    grid-column: 2 !important;
+  }
+}

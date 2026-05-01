@@ -1,0 +1,198 @@
+/* SHIV KRISHNA ENGINEERS — Creative Silver Theme (High Contrast & Interaction) */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,500&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --bg-primary: #e8eaed; 
+  --bg-secondary: #f4f5f7;
+  --bg-surface: #ffffff;
+  
+  --accent: #ff4b00;
+  --accent-hover: #e04200;
+  --accent-soft: rgba(255, 75, 0, 0.1);
+  
+  --text-primary: #121416; 
+  --text-secondary: #42464d;
+  --text-muted: #737b85;
+  
+  --border-light: rgba(18, 20, 22, 0.08);
+  --border-medium: rgba(18, 20, 22, 0.15);
+  
+  --shadow-float: 0 20px 40px rgba(0, 0, 0, 0.06);
+  --shadow-glow: 0 0 40px rgba(255, 75, 0, 0.15);
+  
+  --font-display: 'Outfit', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  
+  --container-max: 1600px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Global Heading Interaction */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: var(--text-primary) !important; /* Force dark text globally */
+}
+
+/* Page Hero — Deep Contrast & Entrance */
+.page-hero {
+  padding: 220px 5% 120px;
+  background-color: var(--bg-secondary);
+  position: relative;
+  overflow: hidden;
+}
+
+.page-hero h1 {
+  font-size: clamp(3.5rem, 9vw, 8rem);
+  margin-top: 24px;
+  max-width: 1200px;
+  opacity: 0;
+  transform: translateY(50px) skewY(2deg);
+  animation: heroReveal 1.2s cubic-bezier(0.2, 1, 0.3, 1) forwards;
+}
+
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  opacity: 0;
+  animation: fadeInDown 1s ease forwards;
+}
+
+.hero-eyebrow::before {
+  content: '';
+  width: 40px;
+  height: 2px;
+  background: var(--accent);
+}
+
+.breadcrumb {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: 40px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  opacity: 0;
+  animation: fadeInUp 1s ease 0.6s forwards;
+}
+
+@keyframes heroReveal {
+  to { opacity: 1; transform: translateY(0) skewY(0); }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Section Labels & Headings */
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.section-label::after {
+  content: '';
+  flex-grow: 0;
+  width: 30px;
+  height: 1px;
+  background: var(--border-medium);
+}
+
+/* Magnetic Link Effect */
+.nav-link-hover {
+  display: inline-block;
+  padding: 8px 0;
+  color: var(--text-primary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.3s cubic-bezier(0.2, 1, 0.3, 1), color 0.3s ease;
+}
+
+.nav-link-hover:hover {
+  color: var(--accent);
+  transform: translateX(5px);
+}
+
+/* Creative Hover Scale for all Interactive Elements */
+a, button {
+  cursor: pointer;
+}
+
+.btn-magnetic {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 50px;
+  background: var(--text-primary);
+  color: white !important; /* Contrast check */
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-radius: 4px;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+  border: none;
+}
+
+.btn-magnetic::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: var(--accent);
+  transition: left 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+  z-index: 0;
+}
+
+.btn-magnetic span {
+  position: relative;
+  z-index: 1;
+}
+
+.btn-magnetic:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(255, 75, 0, 0.2);
+}
+
+.btn-magnetic:hover::before {
+  left: 0;
+}

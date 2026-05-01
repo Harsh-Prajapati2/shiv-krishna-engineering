@@ -1,0 +1,136 @@
+/* TimelineSection.css */
+
+.journey-section {
+  padding: 80px 0;
+  background-color: var(--bg-primary); /* Use light theme background */
+  color: var(--text-primary); /* Use light theme text color */
+  text-align: center;
+  position: relative;
+  overflow: hidden; /* Ensure no overflow from animations */
+}
+
+.journey-header h2 {
+  font-size: 3em;
+  margin-bottom: 10px;
+  color: var(--color-heading);
+}
+
+.journey-header p {
+  font-size: 1.2em;
+  margin-bottom: 60px;
+  color: var(--text-secondary);
+}
+
+.timeline-container {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  padding: 0 20px;
+}
+
+.timeline-svg {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  height: 100%;
+  width: 2px; /* Make it thin */
+  transform: translateX(-50%);
+  z-index: 1;
+  /* The strokeDasharray and strokeDashoffset will be set by GSAP */
+}
+
+.milestones-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 800px; /* Limit width for better readability */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+}
+
+.milestone-card {
+  background-color: var(--bg-secondary); /* Slightly darker background for cards */
+  border-radius: 10px;
+  padding: 30px;
+  margin: 40px 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 400px;
+  text-align: left;
+  position: relative;
+  opacity: 0; /* Start hidden for animation */
+  transform: translateY(50px); /* Start below for animation */
+  border-left: 5px solid var(--color-accent); /* Accent border */
+}
+
+.milestone-card::before {
+  content: '';
+  position: absolute;
+  left: -35px; /* Position the dot on the timeline */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background-color: var(--color-accent);
+  border-radius: 50%;
+  z-index: 3;
+  border: 3px solid var(--bg-primary); /* Border to stand out from timeline */
+}
+
+.milestone-icon {
+  float: right; /* Position icon to the right */
+  margin-left: 20px;
+  color: var(--color-accent);
+  width: 40px;
+  height: 40px;
+}
+
+.milestone-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.milestone-year {
+  font-size: 1.8em;
+  font-weight: bold;
+  color: var(--color-heading);
+  margin-bottom: 10px;
+}
+
+.milestone-title {
+  font-size: 1.4em;
+  color: var(--color-heading);
+  margin-bottom: 10px;
+}
+
+.milestone-description {
+  font-size: 1em;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .journey-header h2 {
+    font-size: 2.5em;
+  }
+  .journey-header p {
+    font-size: 1em;
+  }
+  .milestone-card {
+    padding: 20px;
+    margin: 30px 0;
+    width: 95%;
+  }
+  .milestone-card::before {
+    left: -25px;
+    width: 15px;
+    height: 15px;
+  }
+  .milestone-icon {
+    width: 30px;
+    height: 30px;
+    margin-left: 15px;
+  }
+}

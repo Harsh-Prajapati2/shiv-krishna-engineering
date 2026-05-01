@@ -1,0 +1,194 @@
+/* STRENGTH PAGE — Immersive Silver Redesign */
+
+.strength-page .page-hero {
+  background-color: var(--bg-secondary);
+}
+
+.tools-section {
+  padding: 150px 5%;
+  background: var(--bg-primary);
+}
+
+.table-wrapper {
+  margin-top: 60px;
+  background: var(--bg-surface);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: var(--shadow-float);
+  border: 1px solid var(--border-light);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-table th {
+  background: var(--bg-secondary);
+  padding: 24px 40px;
+  text-align: left;
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+}
+
+.data-table td {
+  padding: 24px 40px;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 16px;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+.data-table tr:last-child td { border-bottom: none; }
+
+.data-table tr:hover td {
+  background: rgba(255, 75, 0, 0.05);
+  color: var(--accent);
+  padding-left: 50px;
+}
+
+/* Manpower Grid — Effect 21 (Scale Zoom) & 41 (Traveling Shadow) */
+.manpower-section {
+  padding: 150px 5%;
+}
+
+.manpower-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 100px;
+  align-items: center;
+}
+
+.manpower-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 24px;
+}
+
+.manpower-item {
+  background: var(--bg-surface);
+  padding: 40px 30px;
+  border-radius: 20px;
+  border: 1px solid var(--border-light);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.4s cubic-bezier(0.2, 1, 0.3, 1), box-shadow 0.4s ease;
+  position: relative;
+  cursor: pointer;
+}
+
+/* Hover Actions */
+.manpower-item:hover {
+  /* Effect 21: Scale Zoom */
+  transform: scale(1.08);
+  /* Effect 41: Traveling Shadow (simulated with keyframes) */
+  animation: travelingShadow 2s infinite linear;
+  border-color: var(--accent);
+  z-index: 10;
+}
+
+@keyframes travelingShadow {
+  0% { box-shadow: -15px 15px 30px rgba(0,0,0,0.05); }
+  50% { box-shadow: 15px 15px 30px rgba(0,0,0,0.05); }
+  100% { box-shadow: -15px 15px 30px rgba(0,0,0,0.05); }
+}
+
+.manpower-item .count {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--text-primary);
+  transition: color 0.3s ease;
+}
+
+.manpower-item:hover .count {
+  color: var(--accent);
+}
+
+.manpower-item .title {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  letter-spacing: 0.1em;
+  margin-top: 8px;
+}
+
+/* 4 Pillars — Effect 17 (Swipe-In Highlight) & 15 (Squeeze & Release) */
+.pillars-section {
+  padding: 150px 5%;
+  background: var(--bg-secondary);
+}
+
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  margin-top: 80px;
+}
+
+.pillar-card {
+  padding: 60px 48px;
+  background: var(--bg-surface);
+  border-radius: 30px;
+  box-shadow: var(--shadow-float);
+  border: 1px solid var(--border-light);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Base state for swipe highlight */
+.pillar-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -150%;
+  width: 100%; height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+  transform: skewX(-30deg);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.pillar-card:hover {
+  /* Effect 15: Squeeze & Release (keyframe triggered) */
+  animation: squeezeRelease 0.6s cubic-bezier(0.2, 1, 0.3, 1) forwards;
+  border-color: var(--accent);
+}
+
+/* Effect 17: Swipe Highlight */
+.pillar-card:hover::before {
+  animation: swipeHighlight 1s ease forwards;
+}
+
+@keyframes squeezeRelease {
+  0% { transform: scale(1); }
+  30% { transform: scale(0.95); }
+  60% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+@keyframes swipeHighlight {
+  0% { left: -150%; }
+  100% { left: 150%; }
+}
+
+.pillar-card h3 {
+  font-size: 2rem;
+  margin-bottom: 24px;
+  color: var(--text-primary);
+  position: relative;
+  z-index: 2;
+}
+
+.pillar-card p {
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  position: relative;
+  z-index: 2;
+}

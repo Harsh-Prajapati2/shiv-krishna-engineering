@@ -1,0 +1,85 @@
+# 20 Best Animation & Transition Ideas with Images & SVGs
+
+---
+
+## **Scroll-Based**
+
+### 1. SVG Path Drawing on Scroll
+An SVG illustration (like a road, circuit board, or world map) has its paths hidden with `stroke-dashoffset`. As you scroll, the paths draw themselves progressively like a pen tracing the lines in real time. The drawing speed matches your scroll speed exactly.
+
+### 2. Image Parallax Depth Stack
+A hero section has 4–5 PNG layers (sky, mountains, trees, ground, foreground). Each layer moves at a different scroll speed. Sky barely moves, foreground races past. Creates genuine 3D depth without any WebGL.
+
+### 3. Scroll-Scrubbed SVG Character Walk
+An SVG character (stick figure, animal, person) is split into body parts. As you scroll, each part animates — legs walk, arms swing, head bobs — all driven by scroll position. The character walks across the screen as you scroll.
+
+### 4. Curtain Image Reveal
+Images are hidden behind a full-cover colored overlay. As each image scrolls into view, the overlay slides upward (like a theater curtain rising) exposing the photo beneath. Each image gets its own curtain color.
+
+### 5. Lenis + Image Scale-Up Hero
+Using Lenis smooth scroll, the hero image starts slightly zoomed in (scale 1.15) and slowly scales back to 1.0 as you scroll down. Combined with smooth easing, it creates a cinematic breathing effect that feels like a luxury brand site.
+
+### 6. SVG Morphing Landscape
+A background SVG landscape (hills, waves, or cityscape) has its path `d` attribute morph between two shapes as you scroll through sections. Flat ground morphs into mountains. Still ocean morphs into choppy waves.
+
+### 7. Horizontal Image Gallery inside Vertical Scroll
+A section pins itself on screen while you scroll. Inside it, a row of images slides horizontally left-to-right driven entirely by vertical scroll progress. You scroll down but the images move sideways — jarring and memorable.
+
+### 8. Clip-Path Image Wipe Reveal
+Images are revealed using an animated `clip-path`. As they scroll into view, the clip path animates from `polygon(0 0, 0 0, 0 100%, 0 100%)` to full width — a left-to-right wipe that dramatically uncovers the photo.
+
+### 9. Counter Number Roll-Up
+Large display numbers (stats, percentages, years) start at 0 and count up to their target value when scrolled into view. Combined with an SVG circular progress ring that fills simultaneously. Used heavily on agency and portfolio sites.
+
+### 10. Staggered Image Grid Entrance
+A grid of photos/cards is invisible below the fold. When scrolled into view, each card fades up and in with staggered delays — first card at 0ms, second at 80ms, third at 160ms — creating a cascading wave effect across the grid.
+
+---
+
+## **Transition-Based**
+
+### 11. View Transitions API Page Morph
+A card on one page morphs into the full hero image on the next page using the native View Transitions API. The thumbnail smoothly scales, repositions, and transforms into the full layout. No JavaScript animation library needed.
+
+### 12. Framer Motion Shared Layout Image
+In React with Framer Motion, clicking a small thumbnail expands it using `layoutId`. The image smoothly fills the screen with spring physics. Clicking back shrinks it back to thumbnail. Used on Dribbble-style portfolio grids.
+
+### 13. SVG Loader to Content Reveal
+A full-screen SVG loader (geometric shape, logo outline) animates while content loads. On completion, the SVG shape expands to cover the screen, then contracts revealing the final page content beneath it.
+
+### 14. Page Flip Transition
+Navigating between pages triggers a CSS 3D page-fold animation. The current page folds backward like a book page turning, revealing the next page underneath. Complete with fold shadow and paper texture effect.
+
+### 15. Liquid Blob Transition
+Between sections, an SVG blob (using `feTurbulence` and `feDisplacementMap` SVG filters) morphs and expands to cover the screen. The blob color matches the next section's palette. Creates a fluid, organic page transition.
+
+---
+
+## **Image & SVG Specific**
+
+### 16. SVG Filter Glitch on Hover
+Images have an SVG `feDisplacementMap` filter applied on hover. The displacement amount rapidly oscillates, creating a digital glitch effect. Image appears to tear, shift, and distort for 0.5 seconds before settling.
+
+### 17. Photo Color-to-Grayscale Scroll
+All images on the page start in full color. As you scroll past them, they gradually desaturate to grayscale using `filter: saturate()` tied to scroll position. Scroll back up and color returns. Only the currently-in-view image is in full color.
+
+### 18. SVG Illustrated Timeline Draw
+A vertical timeline is built as one long SVG with nodes and connecting paths. As you scroll down, the connecting line draws itself connecting each milestone dot, and each node scales in with a spring bounce as the line reaches it.
+
+### 19. Image Distortion on Scroll Velocity
+Images have a CSS `perspective` and `skewY` transform that responds to scroll speed. Slow scroll = no distortion. Fast scroll = images skew/lean in the scroll direction like they have inertia. Stop scrolling and they spring back. This is the signature Lenis + GSAP effect.
+
+### 20. SVG Icon Burst on Scroll Enter
+Section icons are SVG paths that start collapsed to a center point. When the section scrolls into view, each icon's paths animate outward from the center like an explosion, assembling the final icon shape in 400ms with a satisfying spring pop.
+
+---
+
+## **Key Libraries for Implementation**
+
+- Lenis — buttery smooth scroll inertia and velocity tracking
+- GSAP ScrollTrigger — the industry standard for scroll-driven animations
+- Framer Motion — React spring physics and layout animations
+- View Transitions API — native browser morphing between pages
+- Intersection Observer — lightweight trigger for entrance animations
+- anime.js — SVG path drawing and morph animations
+- Three.js — if you need 3D parallax or WebGL image effects

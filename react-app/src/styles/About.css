@@ -208,3 +208,68 @@
   font-weight: 800;
   color: var(--text-primary);
 }
+
+@media (max-width: 1024px) {
+  .story-section,
+  .organogram-section,
+  .registrations-section {
+    padding-top: 90px;
+    padding-bottom: 90px;
+  }
+
+  .story-grid {
+    grid-template-columns: 1fr;
+    gap: 46px;
+  }
+
+  .policy-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    margin-top: 44px;
+  }
+
+  .policy-card {
+    padding: 34px 24px;
+  }
+
+  .policy-card h3 {
+    font-size: clamp(1.6rem, 7vw, 2.2rem);
+  }
+
+  .org-chart {
+    gap: 26px;
+    margin-top: 48px;
+  }
+
+  .org-node {
+    min-width: 0;
+    width: 100%;
+    max-width: 520px;
+    padding: 24px 20px;
+  }
+
+  .org-node .name {
+    font-size: 1.2rem;
+  }
+
+  .registrations-grid {
+    flex-wrap: wrap;
+    padding-top: 32px;
+    gap: 26px;
+  }
+}
+
+@media (max-width: 640px) {
+  .story-text p,
+  .policy-card li {
+    font-size: 1rem;
+  }
+
+  .policy-card:hover {
+    border-radius: 18px;
+  }
+
+  .reg-item .value {
+    font-size: 1.25rem;
+  }
+}

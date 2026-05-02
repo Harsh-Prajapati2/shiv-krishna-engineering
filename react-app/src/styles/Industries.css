@@ -126,3 +126,36 @@
 .coverage-section {
   padding: 150px 0;
 }
+
+@media (max-width: 1024px) {
+  .industries-grid-section,
+  .coverage-section {
+    padding-top: 90px;
+    padding-bottom: 90px;
+  }
+
+  .industries-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .industry-card {
+    padding: 38px 24px;
+    border-radius: 22px;
+  }
+
+  .industry-card h2 {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+    margin-bottom: 14px;
+  }
+
+  .industry-card p {
+    font-size: 1rem;
+  }
+
+  .industry-index {
+    font-size: clamp(4.2rem, 18vw, 7.8rem);
+    top: -8px;
+    right: -4px;
+  }
+}

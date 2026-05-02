@@ -319,3 +319,50 @@
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 6.5rem 1rem 4.5rem;
+    min-height: 92vh;
+  }
+
+  .hero-bg {
+    height: 92vh;
+  }
+
+  .hero-content-wrapper {
+    gap: 2rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    margin: 1rem auto;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+    align-items: stretch;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    padding: 0.95rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .hero-bottom-ticker {
+    padding: 0.7rem 0;
+  }
+
+  .ticker-track {
+    gap: 1.2rem;
+    padding-left: 1.2rem;
+  }
+
+  .ticker-track span {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+  }
+}

@@ -146,3 +146,77 @@
 .dot {
   color: var(--accent);
 }
+
+@media (max-width: 1200px) {
+  .creative-footer {
+    padding: 80px 0 30px;
+  }
+
+  .footer-top-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 44px;
+    margin-bottom: 80px;
+  }
+
+  .huge-email {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .footer-top-grid {
+    grid-template-columns: 1fr;
+    gap: 34px;
+    margin-bottom: 58px;
+  }
+
+  .footer-brand-col h3 {
+    font-size: 1.6rem;
+  }
+
+  .footer-address,
+  .contact-numbers {
+    font-size: 1rem;
+  }
+
+  .magnetic-links a {
+    font-size: 1.05rem;
+  }
+
+  .huge-email {
+    font-size: 1.3rem;
+    overflow-wrap: anywhere;
+  }
+
+  .footer-bottom-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 560px) {
+  .creative-footer {
+    padding-top: 68px;
+  }
+
+  .footer-massive-text {
+    padding-bottom: 24px;
+    margin-bottom: 26px;
+  }
+
+  .footer-massive-text h1 {
+    line-height: 0.95;
+  }
+
+  .brand-badge,
+  .col-label {
+    margin-bottom: 16px;
+  }
+
+  .legal-info {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}

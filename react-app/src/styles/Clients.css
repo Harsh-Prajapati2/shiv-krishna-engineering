@@ -166,3 +166,65 @@
   opacity: 0.8;
   margin-bottom: 60px;
 }
+
+@media (max-width: 1024px) {
+  .clients-intro-section,
+  .amc-section,
+  .solar-partnership-section,
+  .cta-block-section {
+    padding-top: 90px;
+    padding-bottom: 90px;
+  }
+
+  .amc-grid,
+  .solar-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .solar-grid .solar-visual {
+    order: 2;
+  }
+
+  .solar-grid .solar-content {
+    order: 1;
+  }
+
+  .amc-content h2,
+  .solar-content h2 {
+    margin-bottom: 18px;
+  }
+
+  .amc-content p,
+  .solar-content p {
+    font-size: 1.05rem;
+  }
+
+  .amc-tag,
+  .solar-tag {
+    font-size: clamp(1rem, 5vw, 1.5rem);
+    padding: 20px 28px;
+  }
+
+  .cta-block-section {
+    margin: 0 0 56px;
+    border-radius: 24px;
+  }
+
+  .cta-block-content p {
+    font-size: 1.05rem;
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 560px) {
+  .large-intro {
+    font-size: 1.35rem;
+    line-height: 1.55;
+  }
+
+  .amc-visual,
+  .solar-visual {
+    border-radius: 20px;
+  }
+}

@@ -341,3 +341,84 @@
   0% { background-position: 200% 0; }
   100% { background-position: -100% 0; }
 }
+
+@media (max-width: 1024px) {
+  .service-section {
+    padding-top: 90px;
+    padding-bottom: 90px;
+  }
+
+  .division-header {
+    margin-bottom: 40px;
+  }
+
+  .division-header h2 {
+    margin-bottom: 14px;
+  }
+
+  .division-desc {
+    font-size: 1.02rem;
+    max-width: 100%;
+  }
+
+  .div-num-bg {
+    top: -12px;
+    right: -2%;
+    font-size: 34vw;
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .creative-card {
+    min-height: 0;
+    padding: 30px 22px;
+    border-radius: 20px;
+  }
+
+  .icon-wrapper {
+    font-size: 1.8rem;
+    margin-bottom: 14px;
+  }
+
+  .creative-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+  }
+
+  .creative-card p {
+    font-size: 0.98rem;
+  }
+
+  .card-tech3d .card-content {
+    transform: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .div-num-bg {
+    display: none;
+  }
+
+  .card-radar:hover .ring-1,
+  .card-radar:hover .ring-2,
+  .card-radar:hover .ring-3 {
+    animation-name: radarPulseMobile;
+  }
+
+  @keyframes radarPulseMobile {
+    0% { width: 0; height: 0; opacity: 0.8; border-width: 2px; }
+    100% { width: 240px; height: 240px; opacity: 0; border-width: 0; }
+  }
+}
+
+@media (hover: none) {
+  .card-tech3d:hover,
+  .card-blob:hover,
+  .card-shimmer:hover,
+  .creative-card:hover .icon-wrapper {
+    transform: none;
+  }
+}

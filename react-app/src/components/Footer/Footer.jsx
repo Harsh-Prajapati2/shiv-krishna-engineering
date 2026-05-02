@@ -7,8 +7,11 @@ export default function Footer() {
   return (
     <footer className="creative-footer">
       <div className="footer-container">
-
+        <div className="footer-massive-text">
+          <h1><SpotlightText text="SHIV KRISHNA ENGINEERS" /></h1>
+        </div>
         <div className="footer-top-grid">
+          
           <div className="footer-brand-col">
             <div className="brand-badge">EST. 2018</div>
             <h3 className="invert-text">Committed to<br/>Operational Excellence.</h3>
@@ -49,9 +52,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="footer-massive-text">
-          <h1><SpotlightText text="SHIV KRISHNA" /></h1>
-        </div>
+        
 
         <div className="footer-bottom-bar">
           <div className="legal-info">

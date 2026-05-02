@@ -34,11 +34,10 @@
 .shutter-strip {
   width: 100%;
   height: calc(100vh / 12);
-  background: linear-gradient(
-    90deg,
-    #0a0a0a calc(var(--i, 0) * 2%),
-    #161616 100%
-  );
+  background-image: var(--pt-bg-image);
+  background-size: 100vw 100vh;
+  background-position: center calc(var(--i, 0) * (-100vh / 12));
+  background-repeat: no-repeat;
   transform-origin: top center;
   backface-visibility: hidden;
   border-bottom: 1px solid rgba(255, 75, 0, 0.08);
@@ -65,8 +64,11 @@
 .ch-bg {
   position: absolute;
   inset: 0;
-  background: rgba(8, 8, 8, 0.96);
-  backdrop-filter: blur(4px);
+  background-image: var(--pt-bg-image);
+  background-size: cover;
+  background-position: center;
+  /* Add an overlay to maintain lock aesthetics on top of image */
+  box-shadow: inset 0 0 0 100vmax rgba(8, 8, 8, 0.7);
 }
 
 .ch-h {
@@ -162,7 +164,9 @@
 .counter-overlay {
   flex-direction: column;
   gap: 0;
-  background: #080808;
+  background-image: var(--pt-bg-image);
+  background-size: cover;
+  background-position: center;
 }
 
 .cw-backdrop {
@@ -215,16 +219,26 @@
   width: 100%;
   flex: 1;
   position: relative;
-  background: linear-gradient(
-    180deg,
-    #111 0%,
-    #0d0d0d 100%
-  );
+  background-image: var(--pt-bg-image);
+  background-size: 100vw 100vh;
+  /* Adjusts the background depending on which panel it is (assuming 5 panels) */
+  background-position: center calc(var(--pi, 0) * -20vh);
+  background-repeat: no-repeat;
   border-bottom: 1px solid rgba(255, 75, 0, 0.06);
+  position: relative;
 }
 
+.rp-panel::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.6);
+  pointer-events: none;
+}
+
+/* Remove odd/even gradient since we're using a single background image */
 .rp-panel:nth-child(even) {
-  background: linear-gradient(180deg, #0d0d0d 0%, #111 100%);
+  /* You can keep odd effects if preferred, e.g. a slight overlay change. Here we'll just dim slightly */
 }
 
 .rp-panel::before {
@@ -256,7 +270,9 @@
 
 /* ─── 5. GEAR CURTAIN ─── */
 .gear-overlay {
-  background: #080808;
+  background-image: var(--pt-bg-image);
+  background-size: cover;
+  background-position: center;
   overflow: hidden;
 }
 

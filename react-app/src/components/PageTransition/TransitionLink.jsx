@@ -22,7 +22,7 @@ export default function TransitionLink({ to, children, className = '', style = {
 
   return (
     <a href={to} className={className} style={style} onClick={handleClick}>
-      {children}
+      <span className="transition-link-label">{children}</span>
     </a>
   );
 }

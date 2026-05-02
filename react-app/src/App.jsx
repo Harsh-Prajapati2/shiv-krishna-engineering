@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React, { useEffect, useLayoutEffect, useRef } from 'react';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 
 // Styles
 import './styles/shared.css';
@@ -25,6 +25,68 @@ import Strength   from './pages/Strength';
 
 function AppInner() {
   const overlayRef = useRef(null);
+  const location = useLocation();
+
+  useLayoutEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+  }, [location.pathname]);
+
+  useEffect(() => {
+    const scrollSpeed = 0.72;
+
+    const isScrollableContainer = (element, deltaY) => {
+      if (!element || element === document.body || element === document.documentElement) {
+        return false;
+      }
+
+      const style = window.getComputedStyle(element);
+      const overflowY = style.overflowY;
+      const canScrollY = overflowY === 'auto' || overflowY === 'scroll' || overflowY === 'overlay';
+
+      if (!canScrollY || element.scrollHeight <= element.clientHeight) {
+        return false;
+      }
+
+      if (deltaY > 0) {
+        return element.scrollTop + element.clientHeight < element.scrollHeight;
+      }
+
+      return element.scrollTop > 0;
+    };
+
+    const onWheel = (event) => {
+      const target = event.target instanceof Element ? event.target : null;
+
+      if (target) {
+        const interactiveElement = target.closest('input, textarea, select, [contenteditable="true"]');
+        if (interactiveElement) {
+          return;
+        }
+
+        let currentElement = target;
+        while (currentElement && currentElement !== document.body) {
+          if (isScrollableContainer(currentElement, event.deltaY)) {
+            return;
+          }
+
+          currentElement = currentElement.parentElement;
+        }
+      }
+
+      event.preventDefault();
+      window.scrollBy({
+        top: event.deltaY * scrollSpeed,
+        left: event.deltaX * scrollSpeed,
+        behavior: 'auto',
+      });
+    };
+
+    window.addEventListener('wheel', onWheel, { passive: false });
+
+    return () => {
+      window.removeEventListener('wheel', onWheel);
+    };
+  }, []);
 
   return (
     <PageTransitionRouter overlayRef={overlayRef}>

@@ -25,10 +25,10 @@ export function PageTransitionRouter({ children, overlayRef }) {
 
     const type = PAGE_TRANSITIONS[to] || 'shutter-blinds';
 
-    await overlayRef.current.playIn(type);
+    await overlayRef.current.playIn(type, to);
     navigate(to);
     await new Promise(r => setTimeout(r, 60));
-    await overlayRef.current.playOut(type);
+    await overlayRef.current.playOut(type, to);
 
     locked.current = false;
   }, [navigate, overlayRef]);

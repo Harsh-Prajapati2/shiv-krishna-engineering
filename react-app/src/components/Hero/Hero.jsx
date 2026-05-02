@@ -1,44 +1,138 @@
-import React from 'react';
-import Scene from './Scene';
-import ScrambleText from '../ScrambleText/ScrambleText';
-import TrackingText from '../InteractiveText/TrackingText';
-// import TimelineSection from '../TimelineSection/TimelineSection'; // New import
+import React, { useRef, useState, useEffect } from 'react';
 import './Hero.css';
 
-export default function Hero() {
+const ParticleBurstHeading = ({ children }) => {
+  const containerRef = useRef(null);
+
+  const handleMouseMove = (e) => {
+    if (!containerRef.current) return;
+    createBurst(e.clientX, e.clientY);
+  };
+
+  const handleMouseEnter = (e) => {
+    if (!containerRef.current) return;
+    createBurst(e.clientX, e.clientY);
+  };
+
+  const createBurst = (x, y) => {
+    const container = containerRef.current;
+    if (!container) return;
+    
+    const rect = container.getBoundingClientRect();
+    const relativeX = x - rect.left;
+    const relativeY = y - rect.top;
+
+    const particleCount = 12;
+
+    for (let i = 0; i < particleCount; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      
+      const angle = Math.random() * Math.PI * 2;
+      const velocity = 50 + Math.random() * 100;
+      const tx = Math.cos(angle) * velocity;
+      const ty = Math.sin(angle) * velocity;
+      const size = Math.random() * 6 + 2;
+      
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+      particle.style.left = `${relativeX}px`;
+      particle.style.top = `${relativeY}px`;
+      particle.style.setProperty('--tx', `${tx}px`);
+      particle.style.setProperty('--ty', `${ty}px`);
+      
+      container.appendChild(particle);
+      
+      setTimeout(() => {
+        if (container.contains(particle)) {
+          particle.remove();
+        }
+      }, 800);
+    }
+  };
+
   return (
-    <section className="hero-section">
-      <div className="hero-sticky-container">
-        
-        {/* Background 3D Canvas */}
-        <div className="hero-3d-background">
-          <Scene />
-        </div>
+    <div 
+      className="particle-heading-container" 
+      ref={containerRef}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={handleMouseEnter}
+    >
+      <h1 className="hero-title">{children}</h1>
+    </div>
+  );
+};
 
-        {/* Foreground Content */}
-        <div className="hero-content">
-          <div className="hero-eyebrow-container">
-            <div className="eyebrow-line"></div>
-            <span className="hero-eyebrow">MECHANICAL ENGINEERING CONTRACTORS — BHARUCH, GUJARAT</span>
-          </div>
-          
-          <h1 className="hero-title">
-            <span className="line"><ScrambleText text="PRECISION" delay={200} /></span>
-            <span className="line text-outline"><ScrambleText text="ENGINEERING" delay={600} /></span>
-            <span className="line text-accent"><ScrambleText text="FOR INDUSTRY." delay={1000} /></span>
-          </h1>
+const Hero = () => {
+  const bgRef = useRef(null);
 
-          <p className="hero-subtitle">
-            <TrackingText text="Supply · Erection · Commissioning · Maintenance" />
+  useEffect(() => {
+    if (!bgRef.current) return;
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) return;
+    // small delay so the image has a moment to load
+    const id = setTimeout(() => {
+      bgRef.current.classList.add('animate');
+    }, 80);
+    return () => clearTimeout(id);
+  }, []);
+
+  return (
+    <section className="hero-section light-theme">
+      <div
+        ref={bgRef}
+        className="hero-bg"
+        style={{
+          backgroundImage: `url('/images/hero-background.png')`,
+          opacity: 0.95,
+        }}
+      />
+      <div className="hero-content-wrapper">
+        <div className="hero-text-block fade-in-up delay-1">
+          <ParticleBurstHeading>Industrial Solutions</ParticleBurstHeading>
+          <p className="hero-subtitle fade-in-up delay-2">
+            Precision-led mechanical execution across projects, maintenance, and commissioning for industrial plants.
           </p>
-
-          <div className="hero-cta">
-            <button className="primary-btn">EXPLORE SERVICES</button>
-            <button className="secondary-btn">GET A QUOTE</button>
+          <div className="hero-actions fade-in-up delay-3">
+            <button className="btn-primary">EXPLORE SERVICES</button>
+            <button className="btn-secondary">GET A QUOTE</button>
           </div>
         </div>
 
+        <div className="hero-visual-grid fade-in-up delay-4">
+          <div className="visual-card image-card-1">
+            <img
+              src="/images/project-1.png"
+              alt="Precision Mechanical Engineering"
+            />
+          </div>
+          <div className="visual-card image-card-2">
+            <img
+              src="/images/project-2.png"
+              alt="Industrial Pipeline Assembly"
+            />
+          </div>
+          <div className="visual-card image-card-3">
+            <img
+              src="/images/project-3.png"
+              alt="Industrial Commissioning"
+            />
+          </div>
+        </div>
+
+        <div className="hero-bottom-ticker fade-in-up delay-5">
+          <div className="ticker-track">
+            <span>PRECISION SYSTEMS</span>
+            <span>PIPELINE ENGINEERING</span>
+            <span>MECHANICAL ASSEMBLY</span>
+            <span aria-hidden="true">PRECISION SYSTEMS</span>
+            <span aria-hidden="true">PIPELINE ENGINEERING</span>
+            <span aria-hidden="true">MECHANICAL ASSEMBLY</span>
+          </div>
+        </div>
       </div>
     </section>
   );
-}
+};
+
+export default Hero;

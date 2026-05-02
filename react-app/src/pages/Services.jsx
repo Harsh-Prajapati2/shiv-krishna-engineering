@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import '../styles/Services.css';
+import SVGCircuitDraw from "../components/SVGDraw/SVGCircuitDraw";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -31,11 +32,16 @@ export default function Services() {
 
   return (
     <div className="services-page" ref={pageRef}>
+      {/* ── GLOBAL SVG BACKGROUND ── */}
+      <div className="global-bg-circuit">
+        <SVGCircuitDraw />
+      </div>
+
       {/* Page Hero */}
       <section className="page-hero">
         <div className="container">
           <div className="hero-eyebrow">WHAT WE OFFER</div>
-          <h1>Industrial Expertise<br />Redefined.</h1>
+          <h1 className="hover-animate-heading">Industrial Expertise<br />Redefined.</h1>
           <div className="breadcrumb">Home / Services</div>
         </div>
       </section>
@@ -45,7 +51,7 @@ export default function Services() {
         <div className="container position-relative">
           <div className="div-num-bg">01</div>
           <div className="division-header">
-            <h2>Mechanical Project Division</h2>
+            <h2 className="hover-animate-heading">Mechanical Project Division</h2>
             <p className="division-desc">End-to-end project delivery — from initial planning and material procurement to full site execution and handover.</p>
           </div>
           
@@ -74,7 +80,7 @@ export default function Services() {
         <div className="container position-relative">
           <div className="div-num-bg">02</div>
           <div className="division-header">
-            <h2>Mechanical Maintenance Division</h2>
+            <h2 className="hover-animate-heading">Mechanical Maintenance Division</h2>
             <p className="division-desc">Preventing unplanned downtime with scheduled preventive programs, predictive strategies, and rapid-response shutdown services.</p>
           </div>
           
@@ -107,7 +113,7 @@ export default function Services() {
         <div className="container position-relative">
           <div className="div-num-bg">03</div>
           <div className="division-header">
-            <h2>Designing & Consulting Division</h2>
+            <h2 className="hover-animate-heading">Designing & Consulting Division</h2>
             <p className="division-desc">Qualified draughtsmen and mechanical engineers ensuring every design meets industry codes and safety standards.</p>
           </div>
           
@@ -136,7 +142,7 @@ export default function Services() {
         <div className="container position-relative">
           <div className="div-num-bg">04</div>
           <div className="division-header">
-            <h2>Painting & Insulation</h2>
+            <h2 className="hover-animate-heading">Painting & Insulation</h2>
             <p className="division-desc">Surface protection and thermal management are critical to long-term asset integrity.</p>
           </div>
           

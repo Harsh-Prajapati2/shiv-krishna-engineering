@@ -1,143 +1,98 @@
-import React, { useMemo, useRef, useState, useEffect } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { Float, Environment, ContactShadows, Sparkles, MeshDistortMaterial, useCursor } from '@react-three/drei';
+import React, { useMemo, useRef, useEffect } from 'react';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { Float, Environment, Sparkles } from '@react-three/drei';
+import { EffectComposer, RenderPass, EffectPass, DepthOfFieldEffect } from 'postprocessing';
 import * as THREE from 'three';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 /**
- * 1. ADVANCED GEAR COMPONENT
- * Includes industrial cutouts and hover-reactive states
+ * SIGNATURE VISUAL: THE MECHANICAL HALO
+ * Heavy, precise, industrial ring structure.
  */
-const Gear = ({ color, teeth = 12, ...props }) => {
-  const meshRef = useRef();
-  const [hovered, setHover] = useState(false);
-  useCursor(hovered);
+const MechanicalHalo = () => {
+  const outerRingRef = useRef();
+  const innerRingRef = useRef();
+  const coreRef = useRef();
 
-  const geometry = useMemo(() => {
-    const shape = new THREE.Shape();
-    const baseR = teeth / 10; 
-    const outerRadius = baseR + 0.25;
-    const innerRadius = baseR;
-    
-    for (let i = 0; i < teeth; i++) {
-      const angle = (i * Math.PI * 2) / teeth;
-      const toothWidth = (Math.PI * 2) / teeth;
-      shape.lineTo(Math.cos(angle) * innerRadius, Math.sin(angle) * innerRadius);
-      shape.lineTo(Math.cos(angle + toothWidth * 0.2) * outerRadius, Math.sin(angle + toothWidth * 0.2) * outerRadius);
-      shape.lineTo(Math.cos(angle + toothWidth * 0.7) * outerRadius, Math.sin(angle + toothWidth * 0.7) * outerRadius);
-      shape.lineTo(Math.cos(angle + toothWidth) * innerRadius, Math.sin(angle + toothWidth) * innerRadius);
-    }
+  // High-End Materials
+  const darkMetal = useMemo(() => new THREE.MeshPhysicalMaterial({ color: "#111111", metalness: 0.9, roughness: 0.4, clearcoat: 0.1 }), []);
+  const brushedSteel = useMemo(() => new THREE.MeshPhysicalMaterial({ color: "#777777", metalness: 1.0, roughness: 0.3, clearcoat: 0.2 }), []);
 
-    // Industrial Spokes
-    const numSpokes = 5;
-    for (let i = 0; i < numSpokes; i++) {
-      const holePath = new THREE.Path();
-      const holeAngle = (i * Math.PI * 2) / numSpokes;
-      holePath.absarc(Math.cos(holeAngle) * (baseR * 0.5), Math.sin(holeAngle) * (baseR * 0.5), baseR * 0.15, 0, Math.PI * 2, true);
-      shape.holes.push(holePath);
-    }
-
-    const geom = new THREE.ExtrudeGeometry(shape, { depth: 0.3, bevelEnabled: true, bevelSize: 0.04 });
-    geom.translate(0, 0, -0.15);
-    return geom;
-  }, [teeth]);
+  useFrame((state) => {
+    const t = state.clock.getElapsedTime();
+    // Slow, heavy, precise rotation
+    if (outerRingRef.current) outerRingRef.current.rotation.z = t * 0.05;
+    if (innerRingRef.current) innerRingRef.current.rotation.z = -t * 0.08;
+    if (coreRef.current) coreRef.current.rotation.x = t * 0.1;
+  });
 
   return (
-    <mesh 
-      {...props}
-      ref={meshRef} 
-      geometry={geometry} 
-      onPointerOver={() => setHover(true)}
-      onPointerOut={() => setHover(false)}
-      castShadow
-      receiveShadow
-    >
-      <MeshDistortMaterial 
-        color={hovered ? "#fff" : color} 
-        speed={hovered ? 5 : 0} 
-        distort={hovered ? 0.2 : 0}
-        metalness={1} 
-        roughness={0.1}
-        emissive={color}
-        emissiveIntensity={hovered ? 0.8 : 0.1}
-        transparent={true}
-        opacity={0.8}
-        // The distort and emissiveIntensity will be animated by GSAP directly on the material
-      />
-    </mesh>
+    <group position={[4, 0, -2]} rotation={[0.1, -0.5, 0]}>
+      {/* Massive Outer Ring */}
+      <mesh ref={outerRingRef} castShadow receiveShadow material={darkMetal}>
+        <torusGeometry args={[5, 0.5, 64, 128]} />
+        {Array.from({ length: 8 }).map((_, i) => (
+          <mesh key={`node-${i}`} position={[Math.cos((i / 8) * Math.PI * 2) * 5, Math.sin((i / 8) * Math.PI * 2) * 5, 0]} material={brushedSteel} castShadow>
+            <boxGeometry args={[1.2, 1.2, 1.4]} />
+          </mesh>
+        ))}
+      </mesh>
+
+      {/* Complex Inner Ring */}
+      <mesh ref={innerRingRef} material={brushedSteel} castShadow receiveShadow>
+        <torusGeometry args={[3.8, 0.15, 32, 128]} />
+        {Array.from({ length: 16 }).map((_, i) => (
+          <mesh key={`spoke-${i}`} position={[Math.cos((i / 16) * Math.PI * 2) * 3.8, Math.sin((i / 16) * Math.PI * 2) * 3.8, 0]} rotation={[0, 0, (i / 16) * Math.PI * 2]} material={darkMetal}>
+            <cylinderGeometry args={[0.06, 0.06, 1.5]} />
+          </mesh>
+        ))}
+      </mesh>
+
+      {/* Floating Background Pipelines for depth */}
+      <mesh position={[-2, -4, -6]} rotation={[0, 0, Math.PI / 4]} material={darkMetal}>
+        <cylinderGeometry args={[0.4, 0.4, 20, 32]} />
+      </mesh>
+    </group>
   );
 };
 
 /**
- * 2. THE ORCHESTRATOR
- * Handles Scroll, Parallax, and Gear Interlocking
+ * THE ORCHESTRATOR
  */
 const Orchestrator = () => {
   const group = useRef();
-  const gear1Ref = useRef();
-  const gear2Ref = useRef();
-  const gear3Ref = useRef();
-  const sparklesRef = useRef();
-  const spotLightRef = useRef();
-  const rectAreaLightRef = useRef();
+  const beamsRef = useRef();
   
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger); // Register ScrollTrigger here or at a higher level once
+    gsap.registerPlugin(ScrollTrigger);
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: ".hero-section", // Target the main hero section
-          start: "top top", // When the top of the hero section hits the top of the viewport
-          // The end position is now dynamic, based on the height of the hero section.
-          // This ensures the animation completes as the hero section leaves the viewport.
-          end: () => `+=${document.querySelector(".hero-section").offsetHeight}`,
-          scrub: 1, // Smoothly scrub the animation with scroll
-          // markers: true, // Uncomment for debugging ScrollTrigger
+          trigger: ".hero-section",
+          start: "top top",
+          end: () => `+=${document.querySelector(".hero-section")?.offsetHeight || 1000}`,
+          scrub: 1,
         }
       });
 
-      // Animate gear group scale
-      tl.to(group.current.scale, {
-        x: 2.5, // Make gears significantly bigger
-        y: 2.5,
-        z: 2.5,
-        duration: 1,
-        ease: "power1.inOut"
-      }, 0);
+      // On Load: Camera Dolly-in & Fade
+      gsap.fromTo(group.current.position, 
+        { z: -10 }, 
+        { z: 0, duration: 2.5, ease: "power3.out" }
+      );
 
-      // Animate gear distortion and emissive intensity for morphing and "lights going into it"
-      [gear1Ref, gear2Ref, gear3Ref].forEach((gearRef) => {
-        if (gearRef.current && gearRef.current.material) { // Ensure ref and material exist
-          tl.to(gearRef.current.material, {
-            distort: 0.8, // More pronounced distortion
-            emissiveIntensity: 5.0, // Stronger emissive glow
-            duration: 1,
-            ease: "power1.inOut"
-          }, 0);
-        }
-      });
-
-      // Animate sparkles to intensify and gather
-      tl.to(sparklesRef.current, {
-        count: 1000, // Many more sparkles
-        scale: 5, // Smaller scale to appear to gather
-        speed: 5, // Faster movement
-        opacity: 1, // Fully opaque
-        duration: 1,
-        ease: "power1.inOut"
+      // Scroll Interaction: Move through the structure
+      tl.to(group.current.position, {
+        z: 12, // Camera moves THROUGH the structure
+        y: 2,
+        ease: "none"
       }, 0);
-
-      // Animate lights to focus and intensify
-      tl.to(spotLightRef.current, {
-        intensity: 15, // Much stronger spot light
-        duration: 1,
-        ease: "power1.inOut"
-      }, 0);
-      tl.to(rectAreaLightRef.current, {
-        intensity: 30, // Much stronger rect area light
-        duration: 1,
-        ease: "power1.inOut"
+      
+      tl.to(group.current.rotation, {
+        x: 0.3,
+        y: -0.4,
+        ease: "none"
       }, 0);
 
     });
@@ -146,61 +101,130 @@ const Orchestrator = () => {
   }, []);
 
   useFrame((state) => {
-    const t = state.clock.getElapsedTime();
-    const scrollY = window.scrollY * 0.001;
+    // Tight, subtle Mouse Parallax (clamped to a very small rotation)
+    const maxRot = 0.05; // ~2.8 degrees max
+    const targetX = THREE.MathUtils.clamp(state.mouse.x * 0.05, -maxRot, maxRot);
+    const targetY = THREE.MathUtils.clamp(state.mouse.y * 0.05, -maxRot, maxRot);
+    group.current.rotation.x = THREE.MathUtils.lerp(group.current.rotation.x, targetY, 0.06);
+    group.current.rotation.y = THREE.MathUtils.lerp(group.current.rotation.y, targetX, 0.06);
 
-    // Smooth Mouse Parallax
-    group.current.rotation.x = THREE.MathUtils.lerp(group.current.rotation.x, state.mouse.y * 0.3, 0.05); // Corrected to state.mouse.y
-    group.current.rotation.y = THREE.MathUtils.lerp(group.current.rotation.y, state.mouse.x * 0.3, 0.05); // Corrected to state.mouse.x
-    
-    // Mechanical Logic: Linked Rotations
-    const masterRotation = t * 0.3 + scrollY * 5;
-    
-    // Large Gear (Child 0)
-    if (gear1Ref.current) gear1Ref.current.rotation.z = masterRotation;
-    // Medium Gear (Child 1) - Counter-rotate
-    if (gear2Ref.current) gear2Ref.current.rotation.z = -masterRotation * (24/16) + 0.35;
-    // Small Gear (Child 2) - Counter-rotate
-    if (gear3Ref.current) gear3Ref.current.rotation.z = -masterRotation * (24/12) - 0.2;
-    
-    // Depth Parallax
-    group.current.position.z = THREE.MathUtils.lerp(group.current.position.z, scrollY * 10, 0.1);
+    // Subtle beam wobble
+    if (beamsRef.current) beamsRef.current.rotation.z = Math.sin(state.clock.getElapsedTime() * 0.2) * 0.02;
   });
 
   return (
     <group ref={group}>
-      {/* Main Gear Cluster */}
-      <Gear ref={gear1Ref} position={[-2, 0, 0]} teeth={24} color="#d1d5db" />
-      <Gear ref={gear2Ref} position={[1.2, 2.2, -1]} teeth={16} color="#ff4b00" />
-      <Gear ref={gear3Ref} position={[1.8, -1.5, 0.5]} teeth={12} color="#138a84" />
+      {/* Volumetric subtle light beams (soft planes with additive blending) */}
+      <group ref={beamsRef} position={[-6, 6, -2]} rotation={[0.6, -0.3, 0]}>
+        <mesh rotation={[0, 0, 0]}>
+          <coneGeometry args={[6, 18, 32, 1, true]} />
+          <meshBasicMaterial color="#e8f7ff" transparent opacity={0.04} blending={THREE.AdditiveBlending} depthWrite={false} side={THREE.DoubleSide} />
+        </mesh>
+        <mesh rotation={[0, 0.2, 0]}>
+          <coneGeometry args={[5.2, 16, 32, 1, true]} />
+          <meshBasicMaterial color="#ff7a3a" transparent opacity={0.02} blending={THREE.AdditiveBlending} depthWrite={false} side={THREE.DoubleSide} />
+        </mesh>
+      </group>
+      <MechanicalHalo />
 
-      {/* Atmospheric elements */}
-      <Sparkles ref={sparklesRef} count={100} scale={15} size={1} speed={0.5} opacity={0.3} />
-      {/* Lights moved here to be animated by GSAP */}
-      <spotLight ref={spotLightRef} position={[10, 20, 10]} angle={0.2} penumbra={1} intensity={3} castShadow />
-      <rectAreaLight ref={rectAreaLightRef} width={20} height={20} intensity={10} position={[-10, 5, 5]} color="#ff4b00" />
+      {/* Ambient particles (minimal dust/sparks) */}
+      <Sparkles count={40} scale={12} size={0.9} speed={0.18} opacity={0.18} color="#ffd7b8" />
+
+      {/* Cinematic Lighting Setup */}
+      <ambientLight intensity={0.12} />
+      {/* Key light: top-left cool white */}
+      <spotLight position={[-10, 10, 5]} angle={0.5} penumbra={1} intensity={1.2} color="#e6f7ff" castShadow />
+      {/* Accent light: orange rim light */}
+      <pointLight position={[12, -5, -2]} intensity={0.9} color="#ff6a2d" />
     </group>
   );
 };
 
 /**
- * 3. MAIN EXPORT
+ * Subtle post-processing depth-of-field for load and scroll transitions.
+ */
+const PostFX = () => {
+  const { gl, scene, camera, size } = useThree();
+  const composerRef = useRef();
+  const dofRef = useRef();
+
+  useEffect(() => {
+    const composer = new EffectComposer(gl);
+    const renderPass = new RenderPass(scene, camera);
+    const dof = new DepthOfFieldEffect(camera, {
+      focusDistance: 0.02,
+      focalLength: 0.02,
+      bokehScale: 1.1,
+    });
+    const effectPass = new EffectPass(camera, dof);
+    effectPass.renderToScreen = true;
+
+    composer.addPass(renderPass);
+    composer.addPass(effectPass);
+    composer.setSize(size.width, size.height);
+
+    composerRef.current = composer;
+    dofRef.current = dof;
+
+    return () => composer.dispose();
+  }, [gl, scene, camera, size.width, size.height]);
+
+  useEffect(() => {
+    if (composerRef.current) composerRef.current.setSize(size.width, size.height);
+  }, [size.width, size.height]);
+
+  useFrame((_, delta) => {
+    if (composerRef.current) composerRef.current.render(delta);
+  }, 1);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    const ctx = gsap.context(() => {
+      if (!dofRef.current) return;
+
+      gsap.fromTo(
+        dofRef.current,
+        { focusDistance: 0.12, focalLength: 0.045, bokehScale: 1.6 },
+        { focusDistance: 0.03, focalLength: 0.028, bokehScale: 1.0, duration: 3.2, ease: 'sine.out' }
+      );
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: '.hero-section',
+          start: 'top top',
+          end: () => `+=${document.querySelector('.hero-section')?.offsetHeight || 1000}`,
+          scrub: 1,
+        },
+      });
+
+      tl.to(dofRef.current, { focusDistance: 0.045, focalLength: 0.03, bokehScale: 0.85, ease: 'none' }, 0);
+    });
+
+    return () => ctx.revert();
+  }, []);
+
+  return null;
+};
+
+/**
+ * MAIN EXPORT
  */
 export default function Scene() {
   return (
-    <div className="hero-3d-background-canvas-wrapper" style={{ width: '100vw', height: '100vh', background: 'var(--bg-primary)' }}>
-      <Canvas shadows camera={{ position: [0, 0, 12], fov: 35 }}>
-        {/* Deep space feeling with Fog */}
-        <color attach="background" args={['#f8f8f8']} />
-        <fog attach="fog" args={['#f8f8f8', 10, 25]} />
-        <ambientLight intensity={0.2} />
-        <Environment preset="dawn" />
+    <div className="hero-3d-background" style={{ width: '100%', height: '100%', pointerEvents: 'none' }}>
+      <Canvas shadows camera={{ position: [0, 0, 12], fov: 40 }} style={{ pointerEvents: 'none' }}>
+        {/* Dark Cinematic Atmosphere */}
+        <color attach="background" args={['#020202']} />
+        <fog attach="fog" args={['#020202', 8, 30]} />
+        
+        {/* High-end reflections */}
+        <Environment preset="city" />
 
-        <Float speed={2} rotationIntensity={0.5} floatIntensity={1}>
+        <Float speed={1} rotationIntensity={0.05} floatIntensity={0.08}>
           <Orchestrator />
         </Float>
 
-        <ContactShadows position={[0, -5, 0]} opacity={0.6} scale={20} blur={3} far={10} />
+        <PostFX />
       </Canvas>
     </div>
   );

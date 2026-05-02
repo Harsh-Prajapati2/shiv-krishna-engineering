@@ -167,10 +167,13 @@ a, button {
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  border-radius: 4px;
+  border-radius: 999px;
   overflow: hidden;
+  isolation: isolate;
   transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
   border: none;
+  transform-style: preserve-3d;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.18);
 }
 
 .btn-magnetic::before {
@@ -183,16 +186,57 @@ a, button {
   z-index: 0;
 }
 
+.btn-magnetic::after {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  background:
+    radial-gradient(circle at var(--btn-mx, 50%) var(--btn-my, 50%), rgba(255,255,255,0.32), transparent 38%),
+    linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0));
+  opacity: calc(var(--btn-hover, 0) * 0.9);
+  transition: opacity 220ms ease;
+  z-index: 0;
+  mix-blend-mode: screen;
+}
+
 .btn-magnetic span {
   position: relative;
   z-index: 1;
 }
 
+.btn-magnetic > .transition-link-label {
+  position: relative;
+  z-index: 1;
+}
+
+.btn-magnetic,
+.btn-magnetic * {
+  backface-visibility: hidden;
+}
+
 .btn-magnetic:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(255, 75, 0, 0.2);
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 24px 50px rgba(255, 75, 0, 0.24);
 }
 
 .btn-magnetic:hover::before {
   left: 0;
+}
+
+.magnetic-button-wrapper {
+  transform-style: preserve-3d;
+}
+
+.magnetic-button-wrapper[data-hover='true'] .btn-magnetic,
+.magnetic-button-wrapper[data-hover='true'] .magnetic-circle-btn {
+  box-shadow: 0 26px 56px rgba(255, 75, 0, 0.28), 0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+}
+
+.magnetic-button-wrapper[data-hover='true'] .btn-magnetic {
+  filter: saturate(1.04);
+}
+
+.magnetic-button-wrapper[data-hover='true'] .magnetic-circle-btn {
+  filter: saturate(1.08);
 }

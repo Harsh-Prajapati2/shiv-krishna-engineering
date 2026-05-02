@@ -46,7 +46,23 @@ const TransitionOverlay = forwardRef(function TransitionOverlay(_, ref) {
     'gear-curtain':   gearRef,
   };
 
-  const show = (type) => {
+  const getRouteImage = (route) => {
+    switch(route) {
+      case '/': return 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1920&q=80';
+      case '/about': return 'https://images.unsplash.com/photo-1531834685032-c34bf0d84c62?auto=format&fit=crop&w=1920&q=80';
+      case '/services': return 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1920&q=80';
+      case '/contact': return 'https://images.unsplash.com/photo-1504917595217-d4ce5eb9221c?auto=format&fit=crop&w=1920&q=80';
+      case '/clients': return 'https://images.unsplash.com/photo-1531234799389-dcb629d63c5a?auto=format&fit=crop&w=1920&q=80';
+      case '/industries': return 'https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?auto=format&fit=crop&w=1920&q=80';
+      case '/strength': return 'https://images.unsplash.com/photo-1580983584825-15a995db3031?auto=format&fit=crop&w=1920&q=80';
+      default: return 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1920&q=80';
+    }
+  };
+
+  const show = (type, to) => {
+    const routeImg = getRouteImage(to);
+    rootRef.current.style.setProperty('--pt-bg-image', `url(${routeImg})`);
+
     gsap.set(rootRef.current, { display: 'block' });
     Object.keys(overlays).forEach(k => {
       gsap.set(overlays[k].current, { display: k === type ? 'flex' : 'none' });
@@ -58,8 +74,8 @@ const TransitionOverlay = forwardRef(function TransitionOverlay(_, ref) {
   };
 
   useImperativeHandle(ref, () => ({
-    playIn: (type) => new Promise(resolve => {
-      show(type);
+    playIn: (type, to) => new Promise(resolve => {
+      show(type, to);
       const el = overlays[type]?.current;
       if (!el) { resolve(); return; }
 
@@ -102,7 +118,7 @@ const TransitionOverlay = forwardRef(function TransitionOverlay(_, ref) {
       }
     }),
 
-    playOut: (type) => new Promise(resolve => {
+    playOut: (type, to) => new Promise(resolve => {
       const el = overlays[type]?.current;
       const done = () => { hide(); resolve(); };
       if (!el) { done(); return; }

@@ -50,11 +50,6 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* CTA */}
-        <TransitionLink to="/contact" className="nav-cta">
-          Get a Quote
-        </TransitionLink>
-
       </div>
     </nav>
   );

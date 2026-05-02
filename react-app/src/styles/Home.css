@@ -206,24 +206,73 @@
   border-radius: 50%;
 }
 
+.services-horizontal-shell {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(280px, 40vw) 1fr;
+  gap: 60px;
+  align-items: center;
+  padding: 0 5%;
+}
+
+.services-horizontal-viewport {
+  width: 100%;
+  overflow: hidden;
+}
+
 .services-horizontal-container {
   display: flex;
   gap: 60px;
-  padding: 0 5%;
   height: 65vh;
   align-items: center;
-  width: max-content; /* Critical for GSAP scroll */
+  width: max-content;
 }
 
 .service-intro-panel {
-  min-width: 40vw;
-  padding-right: 100px;
+  max-width: 560px;
+  z-index: 2;
 }
 
 .service-intro-panel h2 {
   font-size: clamp(3rem, 5vw, 5rem);
   color: var(--text-primary);
   margin-bottom: 24px;
+}
+
+.services-intro-heading {
+  display: inline-block;
+  position: relative;
+  transition: transform 0.35s ease, text-shadow 0.35s ease;
+}
+
+.services-intro-heading:hover {
+  transform: translateY(-3px);
+  text-shadow: 0 10px 24px rgba(18, 20, 22, 0.18);
+}
+
+.services-intro-heading::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 999px;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.35s ease;
+}
+
+.services-intro-heading:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.service-intro-panel p {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  max-width: 460px;
 }
 
 .horizontal-card {
@@ -276,6 +325,34 @@
   height: 6px;
   border-radius: 50%;
   background: var(--accent);
+}
+
+@media (max-width: 1024px) {
+  .services-horizontal-wrapper {
+    height: auto;
+    min-height: 100vh;
+    padding: 100px 0;
+  }
+
+  .services-horizontal-shell {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .services-horizontal-viewport {
+    overflow: visible;
+  }
+
+  .services-horizontal-container {
+    width: 100%;
+    height: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .service-intro-panel {
+    max-width: 100%;
+  }
 }
 
 /* =========================================================================

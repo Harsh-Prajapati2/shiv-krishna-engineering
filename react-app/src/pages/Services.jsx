@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+﻿import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import '../styles/Services.css';
@@ -31,28 +31,29 @@ export default function Services() {
   }, []);
 
   return (
-    <div className="services-page" ref={pageRef}>
-      {/* ── GLOBAL SVG BACKGROUND ── */}
+    <div className="services-page page-transition-root" ref={pageRef}>
+      {/* â”€â”€ GLOBAL SVG BACKGROUND â”€â”€ */}
       <div className="global-bg-circuit">
         <SVGCircuitDraw />
       </div>
 
       {/* Page Hero */}
-      <section className="page-hero">
+      <section className="section-transition page-hero">
+        <div className="page-hero-bg" style={{ backgroundImage: `url('/images/hero-background.png')` }} />
         <div className="container">
           <div className="hero-eyebrow">WHAT WE OFFER</div>
-          <h1 className="hover-animate-heading">Industrial Expertise<br />Redefined.</h1>
+          <h1 className="services-hero-heading">Industrial Expertise<br />Redefined.</h1>
           <div className="breadcrumb">Home / Services</div>
         </div>
       </section>
 
       {/* DIVISION 1: Mechanical Project - Liquid Blob Morph */}
-      <section className="service-section division-1">
+      <section className="section-transition service-section division-1">
         <div className="container position-relative">
           <div className="div-num-bg">01</div>
           <div className="division-header">
-            <h2 className="hover-animate-heading">Mechanical Project Division</h2>
-            <p className="division-desc">End-to-end project delivery — from initial planning and material procurement to full site execution and handover.</p>
+            <h2 className="services-section-heading">Mechanical Project Division</h2>
+            <p className="division-desc">End-to-end project delivery â€” from initial planning and material procurement to full site execution and handover.</p>
           </div>
           
           <div className="cards-grid blob-grid">
@@ -65,7 +66,7 @@ export default function Services() {
               <div key={i} className="creative-card card-blob">
                 <div className="blob-bg"></div>
                 <div className="card-content">
-                  <div className="icon-wrapper">✦</div>
+                  <div className="icon-wrapper">âœ¦</div>
                   <h3>{svc.name}</h3>
                   <p>{svc.detail}</p>
                 </div>
@@ -76,11 +77,11 @@ export default function Services() {
       </section>
 
       {/* DIVISION 2: Maintenance - Pulsing Radar/Ripple Rings */}
-      <section className="service-section division-2">
+      <section className="section-transition service-section division-2">
         <div className="container position-relative">
           <div className="div-num-bg">02</div>
           <div className="division-header">
-            <h2 className="hover-animate-heading">Mechanical Maintenance Division</h2>
+            <h2 className="services-section-heading">Mechanical Maintenance Division</h2>
             <p className="division-desc">Preventing unplanned downtime with scheduled preventive programs, predictive strategies, and rapid-response shutdown services.</p>
           </div>
           
@@ -98,7 +99,7 @@ export default function Services() {
                   <div className="ring ring-3"></div>
                 </div>
                 <div className="card-content">
-                  <div className="icon-wrapper">◈</div>
+                  <div className="icon-wrapper">â—ˆ</div>
                   <h3>{svc.name}</h3>
                   <p>{svc.detail}</p>
                 </div>
@@ -109,11 +110,11 @@ export default function Services() {
       </section>
 
       {/* DIVISION 3: Designing - 3D Tech Data Stream */}
-      <section className="service-section division-3">
+      <section className="section-transition service-section division-3">
         <div className="container position-relative">
           <div className="div-num-bg">03</div>
           <div className="division-header">
-            <h2 className="hover-animate-heading">Designing & Consulting Division</h2>
+            <h2 className="services-section-heading">Designing & Consulting Division</h2>
             <p className="division-desc">Qualified draughtsmen and mechanical engineers ensuring every design meets industry codes and safety standards.</p>
           </div>
           
@@ -127,7 +128,7 @@ export default function Services() {
               <div key={i} className="creative-card card-tech3d">
                 <div className="data-stream-bg"></div>
                 <div className="card-content">
-                  <div className="icon-wrapper">◱</div>
+                  <div className="icon-wrapper">â—±</div>
                   <h3>{svc.name}</h3>
                   <p>{svc.detail}</p>
                 </div>
@@ -138,11 +139,11 @@ export default function Services() {
       </section>
 
       {/* DIVISION 4: Painting & Insulation - Shimmering Liquid/Sweep */}
-      <section className="service-section division-4">
+      <section className="section-transition service-section division-4">
         <div className="container position-relative">
           <div className="div-num-bg">04</div>
           <div className="division-header">
-            <h2 className="hover-animate-heading">Painting & Insulation</h2>
+            <h2 className="services-section-heading">Painting & Insulation</h2>
             <p className="division-desc">Surface protection and thermal management are critical to long-term asset integrity.</p>
           </div>
           
@@ -156,7 +157,7 @@ export default function Services() {
               <div key={i} className="creative-card card-shimmer">
                 <div className="shimmer-overlay"></div>
                 <div className="card-content">
-                  <div className="icon-wrapper">◍</div>
+                  <div className="icon-wrapper">â—</div>
                   <h3>{svc.name}</h3>
                   <p>{svc.detail}</p>
                 </div>
@@ -168,3 +169,5 @@ export default function Services() {
     </div>
   );
 }
+
+

@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import SkewCard from '../components/SkewCard/SkewCard';
 import ScrambleText from '../components/ScrambleText/ScrambleText';
 import '../styles/Industries.css';
@@ -36,12 +36,13 @@ export default function Industries() {
   ];
 
   return (
-    <div className="industries-page">
+    <div className="industries-page page-transition-root">
       {/* Page Hero */}
-      <section className="page-hero">
+      <section className="section-transition page-hero">
+        <div className="page-hero-bg" style={{ backgroundImage: `url('/images/hero-background.png')` }} />
         <div className="container">
           <div className="hero-eyebrow">SECTORS WE SERVE</div>
-          <h1>
+          <h1 className="industries-hero-heading">
             <ScrambleText text="Powering Global" delay={200} /><br />
             <ScrambleText text="Industries." delay={800} />
           </h1>
@@ -50,7 +51,7 @@ export default function Industries() {
       </section>
 
       {/* Industries Grid */}
-      <section className="industries-grid-section">
+      <section className="section-transition industries-grid-section">
         <div className="container">
           <div className="industries-grid">
             {industries.map((industry, index) => (
@@ -65,7 +66,7 @@ export default function Industries() {
       </section>
 
       {/* Coverage Section */}
-      <section className="coverage-section bg-accent">
+      <section className="section-transition coverage-section bg-accent">
         <div className="container">
           <div style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'center' }}>
             <div className="section-label" style={{ justifyContent: 'center' }}>COVERAGE</div>
@@ -79,3 +80,5 @@ export default function Industries() {
     </div>
   );
 }
+
+

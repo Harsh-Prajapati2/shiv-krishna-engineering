@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+﻿import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 
@@ -24,7 +24,7 @@ import "../styles/Home.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Placeholder image data — replace src values with real photos
+// Placeholder image data â€” replace src values with real photos
 const projectPhotos = [
   {
     src: "/images/project-1.png",
@@ -45,11 +45,12 @@ const projectPhotos = [
 export default function Home() {
   const marqueeRef = useRef(null);
   const servicesWrapperRef = useRef(null);
+  const servicesViewportRef = useRef(null);
   const servicesContainerRef = useRef(null);
   const aboutTextRef = useRef(null);
 
   useEffect(() => {
-    // ── Word-reveal scrub ──
+    // â”€â”€ Word-reveal scrub â”€â”€
     if (aboutTextRef.current) {
       const words = aboutTextRef.current.querySelectorAll(".word");
       gsap.fromTo(
@@ -70,24 +71,32 @@ export default function Home() {
       );
     }
 
-    // ── Horizontal scroll services ──
-    if (servicesContainerRef.current && servicesWrapperRef.current) {
-      const totalWidth =
-        servicesContainerRef.current.scrollWidth - window.innerWidth;
-      gsap.to(servicesContainerRef.current, {
-        x: -totalWidth,
-        ease: "none",
-        scrollTrigger: {
-          trigger: servicesWrapperRef.current,
-          pin: true,
-          scrub: 1,
-          start: "top top",
-          end: () => `+=${totalWidth}`,
-        },
-      });
+    // â”€â”€ Horizontal scroll services â”€â”€
+    if (servicesContainerRef.current && servicesWrapperRef.current && servicesViewportRef.current) {
+      const getTotalWidth = () =>
+        Math.max(
+          0,
+          servicesContainerRef.current.scrollWidth - servicesViewportRef.current.clientWidth
+        );
+
+      const totalWidth = getTotalWidth();
+      if (window.innerWidth > 1024 && totalWidth > 0) {
+        gsap.to(servicesContainerRef.current, {
+          x: () => -getTotalWidth(),
+          ease: "none",
+          scrollTrigger: {
+            trigger: servicesWrapperRef.current,
+            pin: true,
+            scrub: 1,
+            start: "top top",
+            end: () => `+=${getTotalWidth()}`,
+            invalidateOnRefresh: true,
+          },
+        });
+      }
     }
 
-    // ── Infinite marquee ──
+    // â”€â”€ Infinite marquee â”€â”€
     if (marqueeRef.current) {
       gsap.to(marqueeRef.current, {
         xPercent: -50,
@@ -101,16 +110,16 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="home-page">
-      {/* ── GLOBAL SVG BACKGROUND ── */}
+    <div className="home-page page-transition-root">
+      {/* â”€â”€ GLOBAL SVG BACKGROUND â”€â”€ */}
       <div className="global-bg-circuit">
         <SVGCircuitDraw />
       </div>
 
-      {/* ── HERO (3D Scene) ── */}
+      {/* â”€â”€ HERO (3D Scene) â”€â”€ */}
       <Hero3D />
 
-      {/* ── WHO WE ARE — text + curtain image (Ideas #4 + word scrub) ── */}
+      {/* â”€â”€ WHO WE ARE â€” text + curtain image (Ideas #4 + word scrub) â”€â”€ */}
       <section className="about-immersive">
         <div className="container">
           <ReverseGravitySection>
@@ -176,7 +185,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── STATS WITH SVG RINGS (Idea #9) ── */}
+      {/* â”€â”€ STATS WITH SVG RINGS (Idea #9) â”€â”€ */}
       <section className="stats-section">
         <div className="container">
           <div className="stats-grid">
@@ -188,7 +197,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── CORE DIVISIONS — SVG icon burst cards (Ideas #20 + GlowCard) ── */}
+      {/* â”€â”€ CORE DIVISIONS â€” SVG icon burst cards (Ideas #20 + GlowCard) â”€â”€ */}
       <section className="divisions-section">
         <div className="container">
           <div className="section-label">
@@ -203,7 +212,7 @@ export default function Home() {
                   num: "01",
                   icon: "projects",
                   title: "Mechanical Project Division",
-                  desc: "End-to-end project delivery — planning, procurement, site execution and handover with a dedicated team of execution engineers.",
+                  desc: "End-to-end project delivery â€” planning, procurement, site execution and handover with a dedicated team of execution engineers.",
                 },
                 {
                   id: "2",
@@ -217,14 +226,14 @@ export default function Home() {
                   num: "03",
                   icon: "design",
                   title: "Designing & Consulting Division",
-                  desc: "Technical backbone for complex projects — from initial concept drawings to final as-built documentation.",
+                  desc: "Technical backbone for complex projects â€” from initial concept drawings to final as-built documentation.",
                 },
                 {
                   id: "4",
                   num: "04",
                   icon: "protection",
                   title: "Painting & Insulation",
-                  desc: "Surface protection and thermal management critical to long-term asset integrity — painting, insulation, roof sheeting.",
+                  desc: "Surface protection and thermal management critical to long-term asset integrity â€” painting, insulation, roof sheeting.",
                 },
               ].map((d) => (
                 <GlowCard
@@ -243,8 +252,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── PROJECT PHOTO GRID — staggered cascade entrance (Idea #10) ── */}
-      {/* Replace null srcs with: /images/project-1.jpg … project-6.jpg */}
+      {/* â”€â”€ PROJECT PHOTO GRID â€” staggered cascade entrance (Idea #10) â”€â”€ */}
+      {/* Replace null srcs with: /images/project-1.jpg â€¦ project-6.jpg */}
       <section className="projects-grid-section">
         <div className="container">
           <div className="section-label">
@@ -266,17 +275,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── HORIZONTAL SCROLL SERVICES ── */}
+      {/* â”€â”€ HORIZONTAL SCROLL SERVICES â”€â”€ */}
       <section className="services-horizontal-wrapper" ref={servicesWrapperRef}>
-        <div
-          className="services-horizontal-container"
-          ref={servicesContainerRef}
-        >
+        <div className="services-horizontal-shell">
           <div className="service-intro-panel">
             <div className="section-label">
               <StaggeredText text="WHAT WE DO" />
             </div>
-            <h2 className="hover-animate-heading">
+            <h2 className="services-intro-heading">
               Comprehensive
               <br />
               Industrial Solutions
@@ -284,61 +290,68 @@ export default function Home() {
             <p>Scroll to explore our specialized services.</p>
           </div>
 
-          {[
-            {
-              title: "Projects",
-              items: [
-                "Project Management",
-                "Erection & Commissioning",
-                "Material Supply",
-                "Manpower Supply",
-              ],
-            },
-            {
-              title: "Maintenance",
-              items: [
-                "Preventive Maintenance",
-                "Predictive Solutions",
-                "On-Call Services",
-                "Shutdown Execution",
-              ],
-            },
-            {
-              title: "Designing",
-              items: [
-                "Mechanical Design",
-                "Engineering Consultation",
-                "Technical Docs",
-                "CAD Drafting",
-              ],
-            },
-            {
-              title: "Protection",
-              items: [
-                "Industrial Painting",
-                "Thermal Insulation",
-                "Roof Sheeting",
-                "Surface Prep",
-              ],
-            },
-          ].map((service, i) => (
-            <GlowCard
-              key={i}
-              className="horizontal-card"
-              glowColor="rgba(255, 75, 0, 0.15)"
+          <div className="services-horizontal-viewport" ref={servicesViewportRef}>
+            <div
+              className="services-horizontal-container"
+              ref={servicesContainerRef}
             >
-              <h4>{service.title}</h4>
-              <ul>
-                {service.items.map((item, j) => (
-                  <li key={j}>{item}</li>
-                ))}
-              </ul>
-            </GlowCard>
-          ))}
+              {[
+                {
+                  title: "Projects",
+                  items: [
+                    "Project Management",
+                    "Erection & Commissioning",
+                    "Material Supply",
+                    "Manpower Supply",
+                  ],
+                },
+                {
+                  title: "Maintenance",
+                  items: [
+                    "Preventive Maintenance",
+                    "Predictive Solutions",
+                    "On-Call Services",
+                    "Shutdown Execution",
+                  ],
+                },
+                {
+                  title: "Designing",
+                  items: [
+                    "Mechanical Design",
+                    "Engineering Consultation",
+                    "Technical Docs",
+                    "CAD Drafting",
+                  ],
+                },
+                {
+                  title: "Protection",
+                  items: [
+                    "Industrial Painting",
+                    "Thermal Insulation",
+                    "Roof Sheeting",
+                    "Surface Prep",
+                  ],
+                },
+              ].map((service, i) => (
+                <GlowCard
+                  key={i}
+                  className="horizontal-card"
+                  glowColor="rgba(255, 75, 0, 0.15)"
+                >
+                  <h4>{service.title}</h4>
+                  <ul>
+                    {service.items.map((item, j) => (
+                      <li key={j}>{item}</li>
+                    ))}
+                  </ul>
+                </GlowCard>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* ── ABOUT CLIP WIPE IMAGE (Idea #8) ── */}
+      {/* â”€â”€ ABOUT CLIP WIPE IMAGE (Idea #8) â”€â”€ */}
       {/* Replace src with: /images/site-work.jpg */}
       <section className="clip-section">
         <div className="container clip-two-col">
@@ -370,14 +383,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── SVG TIMELINE (Idea #18) ── */}
+      {/* â”€â”€ SVG TIMELINE (Idea #18) â”€â”€ */}
       <section className="timeline-section">
         <div className="container">
           <SVGTimeline />
         </div>
       </section>
 
-      {/* ── GRAND CTA SECTION ── */}
+      {/* â”€â”€ GRAND CTA SECTION â”€â”€ */}
       <section className="liquid-cta-section">
         <div className="liquid-cta-container">
           
@@ -413,3 +426,4 @@ export default function Home() {
     </div>
   );
 }
+

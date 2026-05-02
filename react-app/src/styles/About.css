@@ -4,6 +4,16 @@
   background-color: var(--bg-secondary);
 }
 
+.about-hero-heading {
+  display: inline-block;
+  transition: transform 0.35s ease, text-shadow 0.35s ease;
+}
+
+.about-hero-heading:hover {
+  transform: perspective(900px) rotateX(8deg) rotateY(-4deg) translateY(-6px);
+  text-shadow: 0 14px 34px rgba(18, 20, 22, 0.2);
+}
+
 .story-section {
   padding: 150px 5%;
 }

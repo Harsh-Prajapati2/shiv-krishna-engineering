@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import GlowCard from '../components/GlowCard/GlowCard';
 import '../styles/Strength.css';
 
@@ -8,11 +8,11 @@ import '../styles/Strength.css';
  */
 export default function Strength() {
   const tools = [
-    { name: "Chain Pulley Block — Various Capacities", qty: "15" },
-    { name: "Drilling Machine — Magnetic", qty: "3" },
+    { name: "Chain Pulley Block â€” Various Capacities", qty: "15" },
+    { name: "Drilling Machine â€” Magnetic", qty: "3" },
     { name: "Gas Cutting Set", qty: "10" },
     { name: "Grinding Machine (AG-7 / AG-5 / GQ-4)", qty: "20" },
-    { name: "Welding Machine — Rectifiers", qty: "15" },
+    { name: "Welding Machine â€” Rectifiers", qty: "15" },
     { name: "Welding Argon Set", qty: "18" },
     { name: "Wire Rope Slings", qty: "25" },
     { name: "Hydra (12T - 14T)", qty: "2" },
@@ -50,18 +50,19 @@ export default function Strength() {
   ];
 
   return (
-    <div className="strength-page">
+    <div className="strength-page page-transition-root">
       {/* Page Hero */}
-      <section className="page-hero">
+      <section className="section-transition page-hero">
+        <div className="page-hero-bg" style={{ backgroundImage: `url('/images/hero-background.png')` }} />
         <div className="container">
           <div className="hero-eyebrow">CAPABILITY OVERVIEW</div>
-          <h1>Infrastructure &<br />Expertise.</h1>
+          <h1 className="strength-hero-heading">Infrastructure &<br />Expertise.</h1>
           <div className="breadcrumb">Home / Strength</div>
         </div>
       </section>
 
       {/* Tools & Equipment */}
-      <section className="tools-section">
+      <section className="section-transition tools-section">
         <div className="container">
           <div className="section-label">INVENTORY</div>
           <h2 className="section-heading">Major Tools & Equipment</h2>
@@ -87,7 +88,7 @@ export default function Strength() {
       </section>
 
       {/* Manpower Breakdown */}
-      <section className="manpower-section bg-secondary">
+      <section className="section-transition manpower-section bg-secondary">
         <div className="container">
           <div className="manpower-grid">
             <div className="manpower-list">
@@ -110,7 +111,7 @@ export default function Strength() {
       </section>
 
       {/* 4 Pillars */}
-      <section className="pillars-section">
+      <section className="section-transition pillars-section">
         <div className="container">
           <div className="section-label" style={{ justifyContent: 'center' }}>PILLARS</div>
           <h2 className="section-heading" style={{ textAlign: 'center' }}>The Core of Our Success</h2>
@@ -127,3 +128,5 @@ export default function Strength() {
     </div>
   );
 }
+
+

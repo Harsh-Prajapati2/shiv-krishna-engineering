@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import ScrambleText from '../components/ScrambleText/ScrambleText';
 import ReverseGravitySection from '../components/ReverseGravitySection/ReverseGravitySection';
 import '../styles/Contact.css';
@@ -9,12 +9,13 @@ import '../styles/Contact.css';
  */
 export default function Contact() {
   return (
-    <div className="contact-page">
+    <div className="contact-page page-transition-root">
       {/* Page Hero */}
-      <section className="page-hero">
+      <section className="section-transition page-hero">
+        <div className="page-hero-bg" style={{ backgroundImage: `url('/images/hero-background.png')` }} />
         <div className="container">
           <div className="hero-eyebrow">GET IN TOUCH</div>
-          <h1>
+          <h1 className="contact-hero-heading">
             <ScrambleText text="Let's Build the" delay={200} /><br />
             <ScrambleText text="Future Together." delay={800} />
           </h1>
@@ -23,7 +24,7 @@ export default function Contact() {
       </section>
 
       {/* Main Contact Section */}
-      <section className="contact-main-section">
+      <section className="section-transition contact-main-section">
         <div className="container">
           <ReverseGravitySection className="contact-grid">
             {/* Contact Form */}
@@ -110,7 +111,7 @@ export default function Contact() {
       </section>
 
       {/* Map Section */}
-      <section className="map-section" style={{ padding: 0, lineHeight: 0 }}>
+      <section className="section-transition map-section" style={{ padding: 0, lineHeight: 0 }}>
         <iframe 
           title="Map"
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d59392.42841675231!2d72.9818816!3d21.7051!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395f039393939393%3A0x3939393939393939!2sBharuch%2C%20Gujarat%20392001!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" 
@@ -120,3 +121,5 @@ export default function Contact() {
     </div>
   );
 }
+
+

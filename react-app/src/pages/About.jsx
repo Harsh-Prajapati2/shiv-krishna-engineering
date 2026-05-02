@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import ScrambleText from '../components/ScrambleText/ScrambleText';
 import ReverseGravitySection from '../components/ReverseGravitySection/ReverseGravitySection';
 import '../styles/About.css';
@@ -9,12 +9,13 @@ import '../styles/About.css';
  */
 export default function About() {
   return (
-    <div className="about-page">
+    <div className="about-page page-transition-root">
       {/* Page Hero */}
-      <section className="page-hero">
+      <section className="section-transition page-hero">
+        <div className="page-hero-bg" style={{ backgroundImage: `url('/images/hero-background.png')` }} />
         <div className="container">
           <div className="hero-eyebrow">OUR STORY</div>
-          <h1>
+          <h1 className="about-hero-heading">
             <ScrambleText text="Built by Engineers," delay={200} /><br />
             <ScrambleText text="Run for Industry." delay={800} />
           </h1>
@@ -23,14 +24,14 @@ export default function About() {
       </section>
 
       {/* Company Story */}
-      <section className="story-section">
+      <section className="section-transition story-section">
         <div className="container">
           <ReverseGravitySection className="story-grid">
             <div className="story-text">
               <div className="section-label">WHO WE ARE</div>
               <h2>Quality and Client Commitment are our Foundations</h2>
               <p>
-                Shiv Krishna Engineers was founded by two mechanical engineering graduates with a shared conviction — that quality execution and client commitment should be the foundation of every project.
+                Shiv Krishna Engineers was founded by two mechanical engineering graduates with a shared conviction â€” that quality execution and client commitment should be the foundation of every project.
               </p>
               <p>
                 Based in Bharuch, Gujarat, we serve clients across pharmaceuticals, petrochemicals, chemicals, power, and cement sectors. Every engagement receives the same level of attention and professionalism.
@@ -47,7 +48,7 @@ export default function About() {
       </section>
 
       {/* Modern Organogram */}
-      <section className="organogram-section">
+      <section className="section-transition organogram-section">
         <div className="container">
           <div className="section-label" style={{ justifyContent: 'center' }}>STRUCTURE</div>
           <h2 className="section-heading">Our Leadership & Team</h2>
@@ -76,7 +77,7 @@ export default function About() {
       </section>
 
       {/* Policy Grid */}
-      <section className="policies-section bg-accent">
+      <section className="section-transition policies-section bg-accent">
         <div className="container">
           <div className="policy-grid">
             <div className="policy-card">
@@ -105,7 +106,7 @@ export default function About() {
       </section>
 
       {/* Credentials */}
-      <section className="registrations-section">
+      <section className="section-transition registrations-section">
         <div className="container">
           <div className="registrations-grid">
             <div className="reg-item">
@@ -126,3 +127,5 @@ export default function About() {
     </div>
   );
 }
+
+

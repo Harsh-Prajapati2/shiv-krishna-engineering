@@ -4,6 +4,41 @@
   background-color: var(--bg-secondary);
 }
 
+.strength-hero-heading {
+  display: inline-block;
+  position: relative;
+  transition: transform 0.35s ease, color 0.35s ease;
+}
+
+.strength-hero-heading:hover {
+  color: var(--accent) !important;
+  transform: translateY(-4px);
+}
+
+.strength-hero-heading::before,
+.strength-hero-heading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.35s ease;
+}
+
+.strength-hero-heading::before {
+  right: calc(100% + 16px);
+}
+
+.strength-hero-heading::after {
+  left: calc(100% + 16px);
+}
+
+.strength-hero-heading:hover::before,
+.strength-hero-heading:hover::after {
+  width: 46px;
+}
+
 .tools-section {
   padding: 150px 5%;
   background: var(--bg-primary);

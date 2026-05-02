@@ -63,7 +63,8 @@
 
 .word {
   display: inline-block;
-  transform: translateY(100%);
+  opacity: 0.18;
+  transform: translateY(24px);
 }
 
 .about-details {

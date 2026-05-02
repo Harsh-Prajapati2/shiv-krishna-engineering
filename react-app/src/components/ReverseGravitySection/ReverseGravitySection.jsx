@@ -4,7 +4,16 @@ import ScrollTrigger from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function ReverseGravitySection({ children, className = "" }) {
+export default function ReverseGravitySection({
+  children,
+  className = "",
+  start = "top 85%",
+  end = "bottom center",
+  y = 200,
+  duration = 1.5,
+  stagger = 0.2,
+  toggleActions = "play none none reverse",
+}) {
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -16,7 +25,7 @@ export default function ReverseGravitySection({ children, className = "" }) {
 
     gsap.fromTo(elements, 
       { 
-        y: 200, 
+        y,
         opacity: 0,
         scale: 0.95
       },
@@ -24,14 +33,14 @@ export default function ReverseGravitySection({ children, className = "" }) {
         y: 0,
         opacity: 1,
         scale: 1,
-        duration: 1.5,
+        duration,
         ease: "power4.out",
-        stagger: 0.2,
+        stagger,
         scrollTrigger: {
           trigger: section,
-          start: "top 85%", // Trigger when section is 15% visible from bottom
-          end: "bottom center",
-          toggleActions: "play none none reverse"
+          start,
+          end,
+          toggleActions
         }
       }
     );
@@ -41,7 +50,7 @@ export default function ReverseGravitySection({ children, className = "" }) {
         if(t.trigger === section) t.kill();
       });
     };
-  }, []);
+  }, [duration, end, stagger, start, toggleActions, y]);
 
   return (
     <div ref={sectionRef} className={className}>

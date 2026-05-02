@@ -55,17 +55,17 @@ export default function Home() {
       const words = aboutTextRef.current.querySelectorAll(".word");
       gsap.fromTo(
         words,
-        { opacity: 0, y: 40 },
+        { opacity: 0.18, y: 24 },
         {
           opacity: 1,
           y: 0,
-          stagger: 0.04,
+          duration: 0.9,
+          stagger: 0.055,
           ease: "power3.out",
           scrollTrigger: {
-            trigger: aboutTextRef.current,
-            start: "top 80%",
-            end: "bottom 40%",
-            scrub: 1.2,
+            trigger: ".about-immersive",
+            start: "top 92%",
+            toggleActions: "play none none none",
           },
         },
       );
@@ -122,7 +122,13 @@ export default function Home() {
       {/* â”€â”€ WHO WE ARE â€” text + curtain image (Ideas #4 + word scrub) â”€â”€ */}
       <section className="about-immersive">
         <div className="container">
-          <ReverseGravitySection>
+          <ReverseGravitySection
+            start="top 96%"
+            y={70}
+            duration={1}
+            stagger={0.1}
+            toggleActions="play none none none"
+          >
             <div className="about-two-col">
               {/* Left: text content */}
               <div className="about-text-col">

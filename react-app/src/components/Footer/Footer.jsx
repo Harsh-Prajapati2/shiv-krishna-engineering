@@ -11,7 +11,6 @@ export default function Footer() {
           <h1><SpotlightText text="SHIV KRISHNA ENGINEERS" /></h1>
         </div>
         <div className="footer-top-grid">
-          
           <div className="footer-brand-col">
             <div className="brand-badge">EST. 2018</div>
             <h3 className="footer-tagline">Committed to<br/>Operational Excellence.</h3>
@@ -52,19 +51,23 @@ export default function Footer() {
           </div>
         </div>
 
-        
-
         <div className="footer-bottom-bar">
           <div className="legal-info">
             <span>GST: 24GFJPS9399J1ZB</span>
-            <span className="dot">â€¢</span>
+            <span className="dot">•</span>
             <span>PAN: GFJPS9399J</span>
           </div>
           <div className="copyright">
-            Â© {new Date().getFullYear()} Shiv Krishna Engineers. All rights reserved.
+            © {new Date().getFullYear()} Shiv Krishna Engineers. All rights reserved.
           </div>
         </div>
 
+        <div className="footer-credit">
+          Developed and maintained by{' '}
+          <a href="http://kesarixtechnology.com/" target="_blank" rel="noopener noreferrer">
+            KesariX Technology
+          </a>
+        </div>
       </div>
     </footer>
   );

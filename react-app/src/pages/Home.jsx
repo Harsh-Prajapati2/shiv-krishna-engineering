@@ -50,7 +50,7 @@ export default function Home() {
   const aboutTextRef = useRef(null);
 
   useEffect(() => {
-    // â”€â”€ Word-reveal scrub â”€â”€
+    //  Word-reveal scrub 
     if (aboutTextRef.current) {
       const words = aboutTextRef.current.querySelectorAll(".word");
       gsap.fromTo(
@@ -71,7 +71,7 @@ export default function Home() {
       );
     }
 
-    // â”€â”€ Horizontal scroll services â”€â”€
+    //  Horizontal scroll services 
     if (servicesContainerRef.current && servicesWrapperRef.current && servicesViewportRef.current) {
       const getTotalWidth = () =>
         Math.max(
@@ -96,7 +96,7 @@ export default function Home() {
       }
     }
 
-    // â”€â”€ Infinite marquee â”€â”€
+    //  Infinite marquee 
     if (marqueeRef.current) {
       gsap.to(marqueeRef.current, {
         xPercent: -50,
@@ -111,15 +111,15 @@ export default function Home() {
 
   return (
     <div className="home-page page-transition-root">
-      {/* â”€â”€ GLOBAL SVG BACKGROUND â”€â”€ */}
+      {/*  GLOBAL SVG BACKGROUND  */}
       <div className="global-bg-circuit">
         <SVGCircuitDraw />
       </div>
 
-      {/* â”€â”€ HERO (3D Scene) â”€â”€ */}
+      {/*  HERO (3D Scene)  */}
       <Hero3D />
 
-      {/* â”€â”€ WHO WE ARE â€” text + curtain image (Ideas #4 + word scrub) â”€â”€ */}
+      {/*  WHO WE ARE â€” text + curtain image (Ideas #4 + word scrub)  */}
       <section className="about-immersive">
         <div className="container">
           <ReverseGravitySection
@@ -191,7 +191,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* â”€â”€ STATS WITH SVG RINGS (Idea #9) â”€â”€ */}
+      {/*  STATS WITH SVG RINGS (Idea #9)  */}
       <section className="stats-section">
         <div className="container">
           <div className="stats-grid">
@@ -203,7 +203,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* â”€â”€ CORE DIVISIONS â€” SVG icon burst cards (Ideas #20 + GlowCard) â”€â”€ */}
+      {/*  CORE DIVISIONS â€” SVG icon burst cards (Ideas #20 + GlowCard)  */}
       <section className="divisions-section">
         <div className="container">
           <div className="section-label">
@@ -258,7 +258,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* â”€â”€ PROJECT PHOTO GRID â€” staggered cascade entrance (Idea #10) â”€â”€ */}
+      {/*  PROJECT PHOTO GRID â€” staggered cascade entrance (Idea #10)  */}
       {/* Replace null srcs with: /images/project-1.jpg â€¦ project-6.jpg */}
       <section className="projects-grid-section">
         <div className="container">
@@ -281,7 +281,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* â”€â”€ HORIZONTAL SCROLL SERVICES â”€â”€ */}
+      {/*  HORIZONTAL SCROLL SERVICES  */}
       <section className="services-horizontal-wrapper" ref={servicesWrapperRef}>
         <div className="services-horizontal-shell">
           <div className="service-intro-panel">
@@ -357,7 +357,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* â”€â”€ ABOUT CLIP WIPE IMAGE (Idea #8) â”€â”€ */}
+      {/*  ABOUT CLIP WIPE IMAGE (Idea #8)  */}
       {/* Replace src with: /images/site-work.jpg */}
       <section className="clip-section">
         <div className="container clip-two-col">
@@ -389,14 +389,14 @@ export default function Home() {
         </div>
       </section>
 
-      {/* â”€â”€ SVG TIMELINE (Idea #18) â”€â”€ */}
+      {/*  SVG TIMELINE (Idea #18)  */}
       <section className="timeline-section">
         <div className="container">
           <SVGTimeline />
         </div>
       </section>
 
-      {/* â”€â”€ GRAND CTA SECTION â”€â”€ */}
+      {/*  GRAND CTA SECTION  */}
       <section className="liquid-cta-section">
         <div className="liquid-cta-container">
           

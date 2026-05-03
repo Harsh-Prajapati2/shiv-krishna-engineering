@@ -137,6 +137,23 @@
   letter-spacing: 0.05em;
 }
 
+.footer-credit {
+  margin-top: 14px;
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.footer-credit a {
+  color: #ffffff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.footer-credit a:hover {
+  color: var(--accent);
+}
+
 .legal-info {
   display: flex;
   align-items: center;

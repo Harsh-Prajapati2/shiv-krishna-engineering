@@ -27,16 +27,16 @@ gsap.registerPlugin(ScrollTrigger);
 // Placeholder image data â€” replace src values with real photos
 const projectPhotos = [
   {
-    src: "/images/project-1.png",
+    src: "/images/project-1.webp",
     alt: "Pipeline Installation Project",
     label: "Pipeline Installation",
   },
-  { src: "/images/project-2.png", alt: "Plant Maintenance Work", label: "Plant Maintenance" },
-  { src: "/images/project-3.png", alt: "Mechanical Erection", label: "Mechanical Erection" },
-  { src: "/images/project-4.png", alt: "Solar Power Project", label: "Solar Project" },
-  { src: "/images/project-5.png", alt: "Structural Fabrication", label: "Structural Fabrication" },
+  { src: "/images/project-2.webp", alt: "Plant Maintenance Work", label: "Plant Maintenance" },
+  { src: "/images/project-3.webp", alt: "Mechanical Erection", label: "Mechanical Erection" },
+  { src: "/images/project-4.webp", alt: "Solar Power Project", label: "Solar Project" },
+  { src: "/images/project-5.webp", alt: "Structural Fabrication", label: "Structural Fabrication" },
   {
-    src: "/images/project-6.png",
+    src: "/images/project-6.webp",
     alt: "Painting & Insulation Work",
     label: "Painting & Insulation",
   },

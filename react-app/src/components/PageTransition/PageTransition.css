@@ -167,6 +167,7 @@
   background-image: var(--pt-bg-image);
   background-size: cover;
   background-position: center;
+  box-shadow: inset 0 0 0 100vmax rgba(6, 10, 16, 0.52);
 }
 
 .cw-backdrop {
@@ -186,16 +187,17 @@
   font-size: clamp(80px, 18vw, 200px);
   font-weight: 900;
   line-height: 0.9;
-  color: transparent;
-  -webkit-text-stroke: 2px var(--accent, #FF4B00);
+  color: rgba(228, 236, 248, 0.15);
+  -webkit-text-stroke: 2px #e6edf7;
   letter-spacing: -0.04em;
   text-transform: uppercase;
   z-index: 1;
-  mix-blend-mode: screen;
+  mix-blend-mode: normal;
+  text-shadow: 0 10px 28px rgba(0, 0, 0, 0.42);
 }
 
 .cw-num:nth-child(2) {
-  color: var(--accent, #FF4B00);
+  color: #f2f6fd;
   -webkit-text-stroke: 0;
 }
 
@@ -205,7 +207,7 @@
   font-family: 'Courier New', monospace;
   font-size: 11px;
   letter-spacing: 0.3em;
-  color: rgba(255, 75, 0, 0.5);
+  color: rgba(227, 236, 248, 0.76);
   text-transform: uppercase;
 }
 
@@ -280,13 +282,13 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at center, rgba(255, 75, 0, 0.15) 0%, transparent 70%);
+  background: radial-gradient(ellipse at center, rgba(192, 203, 220, 0.26) 0%, transparent 70%);
 }
 
 .gc-gear {
   position: absolute;
   transform-origin: center;
-  filter: drop-shadow(0 0 30px rgba(255, 75, 0, 0.4));
+  filter: drop-shadow(0 0 30px rgba(192, 203, 220, 0.42));
 }
 
 .gc-gear-1 { top: 50%; left: 50%; transform: translate(-50%, -50%); }
@@ -299,7 +301,7 @@
   font-family: 'Courier New', monospace;
   font-size: 11px;
   letter-spacing: 0.4em;
-  color: rgba(255, 75, 0, 0.6);
+  color: rgba(214, 223, 235, 0.78);
   text-transform: uppercase;
   z-index: 1;
 }

@@ -66,7 +66,7 @@ export default function Services() {
               <div key={i} className="creative-card card-blob">
                 <div className="blob-bg"></div>
                 <div className="card-content">
-                  <div className="icon-wrapper">âœ¦</div>
+                  <div className="icon-wrapper"></div>
                   <h3>{svc.name}</h3>
                   <p>{svc.detail}</p>
                 </div>
@@ -99,7 +99,7 @@ export default function Services() {
                   <div className="ring ring-3"></div>
                 </div>
                 <div className="card-content">
-                  <div className="icon-wrapper">â—ˆ</div>
+                  <div className="icon-wrapper"></div>
                   <h3>{svc.name}</h3>
                   <p>{svc.detail}</p>
                 </div>
@@ -128,7 +128,7 @@ export default function Services() {
               <div key={i} className="creative-card card-tech3d">
                 <div className="data-stream-bg"></div>
                 <div className="card-content">
-                  <div className="icon-wrapper">â—±</div>
+                  <div className="icon-wrapper"></div>
                   <h3>{svc.name}</h3>
                   <p>{svc.detail}</p>
                 </div>
@@ -157,7 +157,7 @@ export default function Services() {
               <div key={i} className="creative-card card-shimmer">
                 <div className="shimmer-overlay"></div>
                 <div className="card-content">
-                  <div className="icon-wrapper">â—</div>
+                  <div className="icon-wrapper"></div>
                   <h3>{svc.name}</h3>
                   <p>{svc.detail}</p>
                 </div>

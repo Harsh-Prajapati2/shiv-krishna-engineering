@@ -48,6 +48,35 @@
   margin-bottom: 60px;
 }
 
+.contact-highlight {
+  margin-bottom: 28px;
+  padding: 18px 20px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(18, 20, 22, 0.95), rgba(37, 44, 56, 0.92));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 16px 30px rgba(15, 23, 42, 0.18);
+}
+
+.contact-highlight-pill {
+  display: inline-block;
+  margin-bottom: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #dce4f1;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.contact-highlight p {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.55;
+  color: rgba(240, 245, 255, 0.92);
+}
+
 .contact-form {
   display: grid;
   gap: 40px;
@@ -208,6 +237,11 @@
 
   .contact-form-wrapper h2 {
     margin-bottom: 30px;
+  }
+
+  .contact-highlight {
+    margin-bottom: 20px;
+    padding: 14px 16px;
   }
 
   .contact-form {

@@ -47,15 +47,16 @@ const TransitionOverlay = forwardRef(function TransitionOverlay(_, ref) {
   };
 
   const getRouteImage = (route) => {
-    switch(route) {
-      case '/': return 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1920&q=80';
-      case '/about': return 'https://images.unsplash.com/photo-1531834685032-c34bf0d84c62?auto=format&fit=crop&w=1920&q=80';
-      case '/services': return 'https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=1920&q=80';
-      case '/contact': return 'https://images.unsplash.com/photo-1504917595217-d4ce5eb9221c?auto=format&fit=crop&w=1920&q=80';
-      case '/clients': return 'https://images.unsplash.com/photo-1531234799389-dcb629d63c5a?auto=format&fit=crop&w=1920&q=80';
-      case '/industries': return 'https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?auto=format&fit=crop&w=1920&q=80';
-      case '/strength': return 'https://images.unsplash.com/photo-1580983584825-15a995db3031?auto=format&fit=crop&w=1920&q=80';
-      default: return 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1920&q=80';
+    const cleanRoute = (route || '/').split('?')[0].replace(/\/+$/, '') || '/';
+    switch(cleanRoute) {
+      case '/': return '/images/hero-background.png';
+      case '/about': return '/images/project-2.webp';
+      case '/services': return '/images/project-1.webp';
+      case '/contact': return '/images/project-6.webp';
+      case '/clients': return '/images/project-3.webp';
+      case '/industries': return '/images/project-4.webp';
+      case '/strength': return '/images/project-5.webp';
+      default: return '/images/hero-background.png';
     }
   };
 
@@ -205,9 +206,9 @@ const TransitionOverlay = forwardRef(function TransitionOverlay(_, ref) {
 
       {/* 5. GEAR CURTAIN */}
       <div ref={gearRef} className="pt-overlay gear-overlay" style={{ display: 'none', opacity: 0 }}>
-        <div className="gc-gear gc-gear-1"><GearShape r={70} teeth={12} color="#FF4B00" /></div>
-        <div className="gc-gear gc-gear-2"><GearShape r={50} teeth={9}  color="#cc3a00" /></div>
-        <div className="gc-gear gc-gear-3"><GearShape r={40} teeth={7}  color="#FF6B30" /></div>
+        <div className="gc-gear gc-gear-1"><GearShape r={70} teeth={12} color="#c8d0dc" /></div>
+        <div className="gc-gear gc-gear-2"><GearShape r={50} teeth={9}  color="#aeb8c7" /></div>
+        <div className="gc-gear gc-gear-3"><GearShape r={40} teeth={7}  color="#d8dee8" /></div>
         <div className="gc-label">SHIV KRISHNA ENGINEERS</div>
       </div>
 

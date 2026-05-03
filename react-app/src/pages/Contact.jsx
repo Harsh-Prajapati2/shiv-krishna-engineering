@@ -29,6 +29,10 @@ export default function Contact() {
           <ReverseGravitySection className="contact-grid">
             {/* Contact Form */}
             <div className="contact-form-wrapper">
+              <div className="contact-highlight">
+                <span className="contact-highlight-pill">Response Window</span>
+                <p>Our engineering team typically responds within 24 working hours for project enquiries.</p>
+              </div>
               <h2>Send an Enquiry</h2>
               <form className="contact-form">
                 <div className="form-row">

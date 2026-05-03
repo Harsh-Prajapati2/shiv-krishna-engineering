@@ -41,7 +41,7 @@ export default function Clients() {
               <div className="section-label">ANNUAL MAINTENANCE</div>
               <h2>Long-Term Maintenance Partnerships</h2>
               <p>
-                Several of our clients engage us on Annual Maintenance Contract basis â€” a testament to the consistency and quality of our work. AMC clients benefit from priority response and dedicated site teams.
+                Several of our clients engage us on Annual Maintenance Contract basis & a testament to the consistency and quality of our work. AMC clients benefit from priority response and dedicated site teams.
               </p>
             </div>
             <div className="amc-visual">
@@ -62,7 +62,7 @@ export default function Clients() {
               <div className="section-label">STRATEGIC PARTNERSHIP</div>
               <h2>Solar Power Project Execution</h2>
               <p>
-                We are active partners in Solar Power Project execution â€” providing mechanical erection, structural support installation, and commissioning services across the region.
+                We are active partners in Solar Power Project execution & providing mechanical erection, structural support installation, and commissioning services across the region.
               </p>
             </div>
           </ReverseGravitySection>

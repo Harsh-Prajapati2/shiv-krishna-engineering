@@ -1,4 +1,5 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
+import TransitionLink from '../PageTransition/TransitionLink';
 import './Hero.css';
 
 const ParticleBurstHeading = ({ children }) => {
@@ -83,7 +84,7 @@ const Hero = () => {
         ref={bgRef}
         className="hero-bg"
         style={{
-          backgroundImage: `url('/images/hero-background.png')`,
+          backgroundImage: `url('/images/hero-background.webp')`,
           opacity: 0.95,
         }}
       />
@@ -94,27 +95,27 @@ const Hero = () => {
             Precision-led mechanical execution across projects, maintenance, and commissioning for industrial plants.
           </p>
           <div className="hero-actions fade-in-up delay-3">
-            <button className="btn-primary">EXPLORE SERVICES</button>
-            <button className="btn-secondary">GET A QUOTE</button>
+            <TransitionLink to="/services" className="btn-primary">EXPLORE SERVICES</TransitionLink>
+            <TransitionLink to="/contact" className="btn-secondary">GET A QUOTE</TransitionLink>
           </div>
         </div>
 
         <div className="hero-visual-grid fade-in-up delay-4">
           <div className="visual-card image-card-1">
             <img
-              src="/images/project-1.png"
+              src="/images/project-1.webp"
               alt="Precision Mechanical Engineering"
             />
           </div>
           <div className="visual-card image-card-2">
             <img
-              src="/images/project-2.png"
+              src="/images/project-2.webp"
               alt="Industrial Pipeline Assembly"
             />
           </div>
           <div className="visual-card image-card-3">
             <img
-              src="/images/project-3.png"
+              src="/images/project-3.webp"
               alt="Industrial Commissioning"
             />
           </div>

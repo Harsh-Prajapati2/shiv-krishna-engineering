@@ -14,7 +14,7 @@ export default function Footer() {
           
           <div className="footer-brand-col">
             <div className="brand-badge">EST. 2018</div>
-            <h3 className="invert-text">Committed to<br/>Operational Excellence.</h3>
+            <h3 className="footer-tagline">Committed to<br/>Operational Excellence.</h3>
             <p className="footer-address">
               397, Siddhnath Nagar, Link Road<br />
               Bharuch, Gujarat - 392001

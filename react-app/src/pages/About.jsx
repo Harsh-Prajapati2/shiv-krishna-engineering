@@ -25,27 +25,53 @@ export default function About() {
 
       {/* Company Story */}
       <section className="section-transition story-section">
-        <div className="container">
-          <ReverseGravitySection className="story-grid">
-            <div className="story-text">
-              <div className="section-label">WHO WE ARE</div>
-              <h2>Quality and Client Commitment are our Foundations</h2>
-              <p>
-                Shiv Krishna Engineers was founded by two mechanical engineering graduates with a shared conviction â€” that quality execution and client commitment should be the foundation of every project.
-              </p>
-              <p>
-                Based in Bharuch, Gujarat, we serve clients across pharmaceuticals, petrochemicals, chemicals, power, and cement sectors. Every engagement receives the same level of attention and professionalism.
-              </p>
+      <div className="container">
+        <ReverseGravitySection className="story-grid">
+          
+          <div className="story-text">
+            <div className="section-label">WHO WE ARE</div>
+            
+            <h2>Engineering Excellence Driven by Experience and Execution</h2>
+            
+            <p>
+              Shiv Krishna Engineers is a Bharuch-based mechanical engineering and contracting company, established by experienced professionals with strong industry backgrounds in project execution, erection, and commissioning. The company was built to deliver reliable, high-quality engineering solutions tailored to industrial requirements.
+            </p>
+            
+            <p>
+              We operate through specialized divisions including Mechanical Projects, Maintenance Services, Engineering Design & Consulting, and Painting, Insulation & Roofing. With a skilled workforce and modern tools, we serve industries such as pharmaceuticals, petrochemicals, chemicals, power, and cement, ensuring safety, efficiency, and consistent project delivery.
+            </p>
+          </div>
+
+          <div className="story-image-box">
+            {/* Visual geometric element */}
+            <div
+              style={{
+                width: '100%',
+                height: '400px',
+                background: 'var(--bg-secondary)',
+                border: '1px solid var(--border-light)',
+                borderRadius: '24px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
+            >
+              <span
+                style={{
+                  fontFamily: 'var(--font-display)',
+                  fontSize: '5rem',
+                  fontWeight: 900,
+                  color: 'var(--accent)'
+                }}
+              >
+                2020
+              </span>
             </div>
-            <div className="story-image-box">
-              {/* Visual geometric element */}
-              <div style={{ width: '100%', height: '400px', background: 'var(--bg-secondary)', border: '1px solid var(--border-light)', borderRadius: '24px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <span style={{ fontFamily: 'var(--font-display)', fontSize: '5rem', fontWeight: 900, color: 'var(--accent)' }}>2018</span>
-              </div>
-            </div>
-          </ReverseGravitySection>
-        </div>
-      </section>
+          </div>
+
+        </ReverseGravitySection>
+      </div>
+    </section>
 
       {/* Modern Organogram */}
       <section className="section-transition organogram-section">

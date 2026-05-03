@@ -8,35 +8,53 @@ gsap.registerPlugin(ScrollTrigger);
 // Dummy data for milestones
 const milestones = [
   {
-    year: 2005,
-    title: "Company Founded",
-    description: "Shiv Krishna Engineering was established with a vision to provide top-notch mechanical engineering solutions.",
-    icon: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z" // Example SVG path for a 'start' icon
+    year: 2020,
+    title: "Company Established",
+    description: "Shiv Krishna Engineers was founded in Bharuch, Gujarat, by experienced mechanical engineers with over 6 years of industry expertise, focusing on project execution, erection, and commissioning services across industrial sectors.",
+    icon: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"
   },
   {
-    year: 2008,
-    title: "First Major Project",
-    description: "Successfully completed our first large-scale industrial installation, marking a significant growth milestone.",
-    icon: "M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" // Example SVG path for a 'person' icon
+    year: 2021,
+    title: "Initial Industrial Projects",
+    description: "Successfully executed early-stage mechanical projects including fabrication, erection, and maintenance services for chemical and pharmaceutical industries, establishing operational credibility.",
+    icon: "M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4z"
   },
   {
-    year: 2012,
-    title: "Expansion of Services",
-    description: "Introduced new services including specialized maintenance contracts and equipment commissioning.",
-    icon: "M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" // Example SVG path for a 'download/upload' icon
-  },
-  {
-    year: 2018,
-    title: "ISO Certification Achieved",
-    description: "Awarded ISO 9001 certification, demonstrating our commitment to quality management systems.",
-    icon: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" // Example SVG path for a 'check' icon
+    year: 2022,
+    title: "Service Diversification",
+    description: "Expanded operations into four major divisions: Mechanical Projects, Maintenance Services, Engineering Design & Consulting, and Painting, Insulation & Roofing, enabling end-to-end industrial solutions.",
+    icon: "M19 9h-4V3H9v6H5l7 7 7-7z"
   },
   {
     year: 2023,
-    title: "Technological Integration",
-    description: "Implemented advanced digital tools for project management and predictive maintenance.",
-    icon: "M13 19h-2v-2h2v2zm2-6H9v6h6v-6zm-2-8h-2V3h2v2zm0 4h-2V7h2v2zm4-4h-2V3h2v2zm0 4h-2V7h2v2zm-4 4h-2V9h2v2zm4 0h-2V9h2v2zM7 19h-2v-2h2v2zm0-4H5v-2h2v2zm0-4H5V9h2v2zm0-4H5V5h2v2zm8 8h-2v-2h2v2zm0-4h-2V9h2v2zm0-4h-2V5h2v2zm-4 8h-2v-2h2v2z" // Example SVG path for a 'settings' icon
+    title: "Major Client Acquisition",
+    description: "Partnered with leading industrial clients including TechnipFMC, Kurl-on, and Expanded Polymer Systems, marking entry into large-scale industrial and petrochemical projects.",
+    icon: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10z"
   },
+  {
+    year: 2023,
+    title: "Workforce & Infrastructure Growth",
+    description: "Scaled operations with a workforce exceeding 150+ skilled professionals including engineers, supervisors, welders, riggers, and technicians, supported by advanced tools and machinery.",
+    icon: "M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3z"
+  },
+  {
+    year: 2024,
+    title: "Operational Excellence & Safety Systems",
+    description: "Implemented structured safety policies, EHS systems, and quality control practices ensuring compliance with industrial standards and improving project reliability.",
+    icon: "M12 2l9 4v6c0 5-3.8 9.74-9 11-5.2-1.26-9-6-9-11V6l9-4z"
+  },
+  {
+    year: 2024,
+    title: "Advanced Services & AMC Contracts",
+    description: "Introduced predictive maintenance, shutdown services, manpower supply, and energy optimization solutions, strengthening long-term AMC partnerships across industries.",
+    icon: "M13 19h-2v-2h2v2z"
+  },
+  {
+    year: 2025,
+    title: "Renewable & Expansion Projects",
+    description: "Entered renewable energy sector through solar power project collaborations and expanded presence across petrochemical, power, and infrastructure industries.",
+    icon: "M12 4V2m0 20v-2m8-8h2M2 12H4m15.364-6.364l1.414-1.414M4.222 19.778l1.414-1.414"
+  }
 ];
 
 const MilestoneCard = ({ year, title, description, icon, index }) => {
@@ -45,6 +63,8 @@ const MilestoneCard = ({ year, title, description, icon, index }) => {
   const isEven = index % 2 === 0;
 
   useEffect(() => {
+    const isDesktop = window.matchMedia('(min-width: 981px)').matches;
+
     gsap.fromTo(
       cardRef.current,
       { opacity: 0, y: 56, rotateX: 10, scale: 0.96 },
@@ -63,20 +83,22 @@ const MilestoneCard = ({ year, title, description, icon, index }) => {
       }
     );
 
-    gsap.to(cardRef.current, {
-      y: -10,
-      rotateZ: isEven ? -1.2 : 1.2,
-      duration: 4.5,
-      ease: 'sine.inOut',
-      yoyo: true,
-      repeat: -1,
-      scrollTrigger: {
-        trigger: cardRef.current,
-        start: 'top bottom',
-        end: 'bottom top',
-        scrub: 1.2,
-      },
-    });
+    if (isDesktop) {
+      gsap.to(cardRef.current, {
+        y: -10,
+        rotateZ: isEven ? -1.2 : 1.2,
+        duration: 4.5,
+        ease: 'sine.inOut',
+        yoyo: true,
+        repeat: -1,
+        scrollTrigger: {
+          trigger: cardRef.current,
+          start: 'top bottom',
+          end: 'bottom top',
+          scrub: 1.2,
+        },
+      });
+    }
 
     // Number roll-up animation for the year
     const yearValue = parseInt(year, 10);

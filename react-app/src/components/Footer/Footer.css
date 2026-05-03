@@ -146,8 +146,13 @@
 .dot {
   color: var(--accent);
 }
-.invert-text {
-  color: var(--text-primary);
+.footer-tagline {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff;
+  text-fill-color: #fff;
+  mix-blend-mode: normal !important;
+  filter: none !important;
+  opacity: 1 !important;
 }
 @media (max-width: 1200px) {
   .creative-footer {

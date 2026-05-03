@@ -8,11 +8,11 @@ import '../styles/Strength.css';
  */
 export default function Strength() {
   const tools = [
-    { name: "Chain Pulley Block â€” Various Capacities", qty: "15" },
-    { name: "Drilling Machine â€” Magnetic", qty: "3" },
+    { name: "Chain Pulley Block & Various Capacities", qty: "15" },
+    { name: "Drilling Machine & Magnetic", qty: "3" },
     { name: "Gas Cutting Set", qty: "10" },
     { name: "Grinding Machine (AG-7 / AG-5 / GQ-4)", qty: "20" },
-    { name: "Welding Machine â€” Rectifiers", qty: "15" },
+    { name: "Welding Machine & Rectifiers", qty: "15" },
     { name: "Welding Argon Set", qty: "18" },
     { name: "Wire Rope Slings", qty: "25" },
     { name: "Hydra (12T - 14T)", qty: "2" },

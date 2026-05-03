@@ -32,7 +32,7 @@ export default function Services() {
 
   return (
     <div className="services-page page-transition-root" ref={pageRef}>
-      {/* â”€â”€ GLOBAL SVG BACKGROUND â”€â”€ */}
+      {/*  GLOBAL SVG BACKGROUND  */}
       <div className="global-bg-circuit">
         <SVGCircuitDraw />
       </div>
@@ -53,7 +53,7 @@ export default function Services() {
           <div className="div-num-bg">01</div>
           <div className="division-header">
             <h2 className="services-section-heading">Mechanical Project Division</h2>
-            <p className="division-desc">End-to-end project delivery â€” from initial planning and material procurement to full site execution and handover.</p>
+            <p className="division-desc">End-to-end project delivery & from initial planning and material procurement to full site execution and handover.</p>
           </div>
           
           <div className="cards-grid blob-grid">

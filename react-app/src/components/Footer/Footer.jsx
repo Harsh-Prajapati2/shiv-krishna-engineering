@@ -12,7 +12,7 @@ export default function Footer() {
         </div>
         <div className="footer-top-grid">
           <div className="footer-brand-col">
-            <div className="brand-badge">EST. 2018</div>
+            <div className="brand-badge">EST. 2020</div>
             <h3 className="footer-tagline">Committed to<br/>Operational Excellence.</h3>
             <p className="footer-address">
               397, Siddhnath Nagar, Link Road<br />
@@ -54,11 +54,11 @@ export default function Footer() {
         <div className="footer-bottom-bar">
           <div className="legal-info">
             <span>GST: 24GFJPS9399J1ZB</span>
-            <span className="dot">•</span>
+            <span className="dot">ï¿½</span>
             <span>PAN: GFJPS9399J</span>
           </div>
           <div className="copyright">
-            © {new Date().getFullYear()} Shiv Krishna Engineers. All rights reserved.
+            ï¿½ {new Date().getFullYear()} Shiv Krishna Engineers. All rights reserved.
           </div>
         </div>
 

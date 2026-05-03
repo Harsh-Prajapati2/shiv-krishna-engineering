@@ -24,7 +24,7 @@ import "../styles/Home.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Placeholder image data â€” replace src values with real photos
+// Placeholder image data & replace src values with real photos
 const projectPhotos = [
   {
     src: "/images/project-1.webp",
@@ -119,7 +119,7 @@ export default function Home() {
       {/*  HERO (3D Scene)  */}
       <Hero3D />
 
-      {/*  WHO WE ARE â€” text + curtain image (Ideas #4 + word scrub)  */}
+      {/*  WHO WE ARE & text + curtain image (Ideas #4 + word scrub)  */}
       <section className="about-immersive">
         <div className="container">
           <ReverseGravitySection
@@ -203,7 +203,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/*  CORE DIVISIONS â€” SVG icon burst cards (Ideas #20 + GlowCard)  */}
+      {/*  CORE DIVISIONS & SVG icon burst cards (Ideas #20 + GlowCard)  */}
       <section className="divisions-section">
         <div className="container">
           <div className="section-label">
@@ -218,7 +218,7 @@ export default function Home() {
                   num: "01",
                   icon: "projects",
                   title: "Mechanical Project Division",
-                  desc: "End-to-end project delivery â€” planning, procurement, site execution and handover with a dedicated team of execution engineers.",
+                  desc: "End-to-end project delivery & planning, procurement, site execution and handover with a dedicated team of execution engineers.",
                 },
                 {
                   id: "2",
@@ -232,14 +232,14 @@ export default function Home() {
                   num: "03",
                   icon: "design",
                   title: "Designing & Consulting Division",
-                  desc: "Technical backbone for complex projects â€” from initial concept drawings to final as-built documentation.",
+                  desc: "Technical backbone for complex projects & from initial concept drawings to final as-built documentation.",
                 },
                 {
                   id: "4",
                   num: "04",
                   icon: "protection",
                   title: "Painting & Insulation",
-                  desc: "Surface protection and thermal management critical to long-term asset integrity â€” painting, insulation, roof sheeting.",
+                  desc: "Surface protection and thermal management critical to long-term asset integrity & painting, insulation, roof sheeting.",
                 },
               ].map((d) => (
                 <GlowCard
@@ -258,7 +258,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/*  PROJECT PHOTO GRID â€” staggered cascade entrance (Idea #10)  */}
+      {/*  PROJECT PHOTO GRID & staggered cascade entrance (Idea #10)  */}
       {/* Replace null srcs with: /images/project-1.jpg â€¦ project-6.jpg */}
       <section className="projects-grid-section">
         <div className="container">
